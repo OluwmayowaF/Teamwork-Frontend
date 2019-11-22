@@ -1,6 +1,14 @@
 * {
-    margin: 0;
     box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1574372803/TeamWorkFE/35237_br5xyn.jpg), rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .App {
@@ -13,7 +21,7 @@
 
 .App-header {
     background-color: #0659FB;
-    height: 80px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,11 +41,73 @@
 
 .App-footer {
     background-color: #0659FB;
-    height: 60px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
+    padding: 100px;
     color: white;
+}
+
+.Main-login {
+    margin: 120px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+.Login-form-container {
+    color: #fff;
+    height: 65vh;
+    background: #528CFD;
+    padding: 0 2% !important;
+    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+}
+
+.Login-form-container p {
+    padding-bottom: 35px;
+}
+
+.Login-form-container h3 {
+    font-size: 30px;
+    line-height: 44px;
+    padding: 10px 0 2px 0;
+}
+
+.Login-form-container label {
+    float: left !important;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.Welcome-message-container {
+    margin-top: 35px;
+    height: 55vh;
+    background: #528CFD;
+    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+    padding: 10% 2% 0 2% !important;
+}
+
+.Login-btn {
+    color: #528CFD;
+    margin: auto;
+    width: 120px;
+    height: 37px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.password-error,
+.email-error {
+    padding-bottom: 20px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .Welcome-message-container {
+        margin-top: 0;
+        height: fit-content;
+        padding: 10px !important;
+    }
 }
