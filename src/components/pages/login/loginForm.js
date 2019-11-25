@@ -1,114 +1,163 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 
 
 export class login extends Component {
     state = {
-        email: '',
-        password: '',
-        emailError: '',
-        passwordError: ''
+        user: [
+         { email: '',
+           password: '',
+          }
+        ],
+        loginbtn: 'LOGIN',
+        userError: false,
+        emailError: false,
+        passwordError: false,
 
     }
 
+    onChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})       
+    }
     saveUser = (user) =>{
-        localStorage.setItem('user', user);
+        localStorage.setItem('user', JSON.stringify(user));
         this.viewUser(user);
-
         console.log(user)
-
     }
     viewUser = (user) => {
         console.log(user.data.firstname)
     }
+    // Validate Form 
 
-    onSubmit = (e) => { e.preventDefault();
-    const url = ' https://teamwork-be-api.herokuapp.com/api/v1/auth/signin';
-    fetch(url, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-    },
-      body: JSON.stringify({ 
-        email: this.state.email,
-        password: this.state.password 
-    }),
-      
-    })
-   .then(resp => resp.json())
-    .then(data => {
-        if(data.status === 'success' ){
-            this.saveUser(data)
-        }else if(data.status === 'error' ){
-            console.log(data.error)
+    validEmail= (e) => {
+        const emailTest  = /\S+@\S+\.\S+/.test(e.target.value);
+        if (e.target.value.length < 1 ){
+            e.target.style.border = '2px solid red';
+            this.setState({emailError: true});
+            return false;
+        } 
+        if (emailTest === false){
+            e.target.style.border = '2px solid red';
+            this.setState({emailError: true});
+            return false;
+        } else {
+            e.target.style.border = '2px solid #90EE90';
+            this.setState({emailError: false});
+            return true;
         }
-        else{
-            console.log('Something went wrong check your internet connection')
-
+        
+    }
+    validPassword= (e) => {
+        if (e.target.value.length < 1 ){
+            e.target.style.border = '2px solid red';
+            this.setState({passwordError: true});
+            return false;
+        } else {
+            e.target.style.border = '2px solid #90EE90';
+            this.setState({passwordError: false});
+            return true;
         }
-            
         
     }
     
 
-    )
+    onSubmit = (e) => { 
+    e.preventDefault();
+    if(this.validEmail !== false && this.validPassword !== false){
+        this.setState({loginbtn: 'Loading...'})
+        const url = ' https://teamwork-be-api.herokuapp.com/api/v1/auth/signin';
+        fetch(url, {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+          body: JSON.stringify({ 
+            email: this.state.email,
+            password: this.state.password 
+        }),
+          
+        })
+       .then(resp => resp.json())
+        .then(data => {
+            this.setState({loginbtn: 'LOGIN'})
     
-}
-        
-        
-      
-    //onChange = (e) =>this.setState({[e.target.name]: 
-     //   e.target.value});
-    onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-        
+            if(data.status === 'success' ){
+                this.saveUser(data)
+              
+                this.props.history.push('/dashboard');
+            }else if(data.error === 'Invalid Credentials' ){
+                this.setState({userError: true});
+            }
+            else{
+                console.log('Something went wrong check your internet connection')
+            }          
+            
+        }
+    )
 
-     }
-
-      
-        
-    render() {
-       
+    } else{
+        console.log('go and fill those fielsds guy')
+    } 
+  
+    
+}     
+    render() {   
         return (
-            <div>
+            <div> 
                 <h3 className="text-left col-md-12" >Login</h3>
                 <p className="text-left col-md-12" >Contact the IT department for your login credentials</p>
+                
                 <form onSubmit ={this.onSubmit}>
                 <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input type= "text"
                 name = "email" 
                 placeholder="Enter your email address..."
-                value={this.state.email}
+                value={this.state.user.email}
                 onChange={this.onChange}
-                className="form-control"/>
-                <p className="email-error" name="emailError" value={this.state.emailError} onChange={this.onChange}>
-                
-                </p>
-
+                onBlur={this.validEmail}
+                className="form-control"
+                required/>
+                <div >{
+                    this.state.emailError  ?  
+                    <p className="error-message">A valid email is required to login</p>
+                    : null 
+                }</div>
                 </div>
-                
+               
                 <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input type= "password"
                 name = "password" 
                 placeholder="Enter your password"
-                value={this.state.password}
+                value={this.state.user.password}
                 onChange={this.onChange} 
-                className="form-control"/>
-                <p className="password-error">
-                    
-                    </p>
+                onBlur={this.validPassword}
+                className="form-control"
+                required/>
+                <div>{
+                    this.state.passwordError  ?  
+                    <p className="error-message">Password is required to login</p>
+                    : null 
+                }</div>
+                <br />
                 </div>
+               
                 <div className="form-group">
                 <input type="submit"
-                value="LOGIN"
+                value={this.state.loginbtn}
                 className="Login-btn"
                 />
-               
                 </div>
-                
+                {
+                    this.state.userError  ?  
+                    <p className="error-message">The email or password provided is incorrect please try again</p>
+                    : null 
+                }
                 
                 </form>
             
@@ -119,4 +168,4 @@ export class login extends Component {
     
 }
 
-export default login
+export default withRouter(login)
