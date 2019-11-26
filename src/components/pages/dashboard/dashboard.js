@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar';
-import LiveFeed from './liveFeed'
+//import LiveFeed from './liveFeed'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../../App.css';
+import CreateEmployee from '../createEmployee/createEmployee'
 
 
 export class dashboard extends Component {
@@ -16,7 +17,8 @@ export class dashboard extends Component {
         return (
             <div>
                 <Sidebar />
-                <LiveFeed />
+                
+                <CreateEmployee />
                
                 
                 
