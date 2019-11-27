@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Articles from '../../elements/article'
+import Feeds from '../../elements/feed'
 import { getToken }   from '../../auth';
 import { Redirect } from 'react-router-dom'
 import { feedsUrl } from '../../apis'
@@ -7,7 +7,7 @@ import swal from '@sweetalert/with-react'
 
 export class liveFeed extends Component {
     state={
-      articles :[
+      feeds :[
 
       ]
     }
@@ -27,7 +27,7 @@ export class liveFeed extends Component {
     .then(resp => resp.json())
     .then(data => { 
       if (data){
-        this.setState({articles: data.data})
+        this.setState({feeds: data.data})
       } if (data.status === '401'){
         return   <Redirect to="/login" />
       } if (!data){
@@ -48,16 +48,17 @@ export class liveFeed extends Component {
    
   }
     render() {
-        return this.state.articles.map((articlez) =>(
-            <div>
-            <Articles 
-            id={articlez.id} 
-            article = {articlez.article}  
-            title={articlez.title} 
-            url={articlez.url}
-            date={articlez.createdon}
-            authorId={articlez.authorid}/>
-                
+        return this.state.feeds.map((feed , key) =>(
+            <div key = {
+              feed.url ? 'gif'+feed.id : 'article'+feed.id
+            }>
+            <Feeds 
+            id={feed.id} 
+            article = {feed.article}  
+            title={feed.title} 
+            url={feed.url}
+            date={feed.createdon}
+            authorId={feed.authorid}/>
             </div>
         )
         )}
