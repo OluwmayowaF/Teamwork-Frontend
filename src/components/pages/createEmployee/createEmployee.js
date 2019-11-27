@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import { withRouter } from 'react-router-dom';
+import '../../../App.css';
+import { createEmployeeUrl } from '../../apis'
 
 export class createEmployee extends Component {
     state = {
@@ -21,9 +24,8 @@ export class createEmployee extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const url = ' https://teamwork-be-api.herokuapp.com/api/v1/auth/create-user';
 
-        fetch(url,{
+        fetch(createEmployeeUrl,{
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -139,7 +141,7 @@ export class createEmployee extends Component {
                
                 <div className="form-group">
                 <input type="submit"
-              
+              value="Submit"
                 className="Login-btn"
                 />
                 </div>
@@ -152,4 +154,4 @@ export class createEmployee extends Component {
     }
 }
 
-export default createEmployee
+export default withRouter(createEmployee)

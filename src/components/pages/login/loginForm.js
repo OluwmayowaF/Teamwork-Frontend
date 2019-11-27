@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import { saveUser }   from '../../auth';
+import { loginUrl } from '../../apis'
+import swal from '@sweetalert/with-react'
 
 
 
@@ -20,16 +23,11 @@ export class login extends Component {
     }
 
     onChange = (e) => {
+       
         this.setState({[e.target.name]: e.target.value})       
     }
-    saveUser = (user) =>{
-        localStorage.setItem('user', JSON.stringify(user));
-        this.viewUser(user);
-        console.log(user)
-    }
-    viewUser = (user) => {
-        console.log(user.data.firstname)
-    }
+   
+   
     // Validate Form 
 
     validEmail= (e) => {
@@ -68,8 +66,8 @@ export class login extends Component {
     e.preventDefault();
     if(this.validEmail !== false && this.validPassword !== false){
         this.setState({loginbtn: 'Loading...'})
-        const url = ' https://teamwork-be-api.herokuapp.com/api/v1/auth/signin';
-        fetch(url, {
+        
+        fetch(loginUrl, {
           method: 'POST',
           mode: 'cors',
           headers: {
@@ -86,18 +84,33 @@ export class login extends Component {
             this.setState({loginbtn: 'LOGIN'})
     
             if(data.status === 'success' ){
-                this.saveUser(data)
+                saveUser(data)
               
                 this.props.history.push('/dashboard');
             }else if(data.error === 'Invalid Credentials' ){
                 this.setState({userError: true});
             }
             else{
-                console.log('Something went wrong check your internet connection')
+                swal(
+                    <div>
+                      <h3>Something doesn't seem right</h3>        
+                      <p>Please check your internet connection and try again</p>
+                    </div>
+                  )
             }          
             
-        }
-    )
+        })
+        .catch(err => {
+            this.setState({loginbtn: 'LOGIN'})
+            if(err) {
+                swal(
+                    <div>
+                      <h3>Something doesn't seem right</h3>        
+                      <p>Please check your internet connection and try again</p>
+                    </div>
+                  )
+            }
+        })
 
     } else{
         console.log('go and fill those fielsds guy')

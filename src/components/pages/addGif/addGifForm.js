@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function addGifs(props) {
+export default function addGifForm(props) {
     return (
-        <div>
-        <form onSubmit ={props.onSubmit}>
+        <div>  
+        <form onSubmit ={props.onSubmit} style={{width: '80%', paddingTop:'100px', paddingLeft:'200px'}}>
                 <div className="form-group">
                 <label htmlFor="title">Title</label>
                 <input type= "text"

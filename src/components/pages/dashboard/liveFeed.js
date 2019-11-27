@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Articles from '../../elements/article'
+import { getToken }   from '../../auth';
+import { Redirect } from 'react-router-dom'
+import { feedsUrl } from '../../apis'
+import swal from '@sweetalert/with-react'
 
 export class liveFeed extends Component {
     state={
@@ -10,26 +14,44 @@ export class liveFeed extends Component {
 
 
   componentDidMount(){
-    const url = 'https://teamwork-be-api.herokuapp.com/api/v1/feeds';
-    fetch(url, {
+    
+   const token = getToken();
+    fetch(feedsUrl, {
       method: 'GET',
       mode: 'cors',
       headers: {
         "Accept": "aplication/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImlhdCI6MTU3MzcyMTU0MCwiZXhwIjoxNTgyMzYxNTQwLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0MzAwMCJ9.g1HgetmUo-7d6EdxiZSjxIBUzCWznO5dccc5ckBRvpg"
+        "Authorization": token
     }
     })
     .then(resp => resp.json())
     .then(data => { 
-      this.setState({articles: data.data})
-      console.log(this.state.articles)
+      if (data){
+        this.setState({articles: data.data})
+      } if (data.status === '401'){
+        return   <Redirect to="/login" />
+      } if (!data){
+        console.log('Nothing to see here')
+      }
     })
+    .catch(err => {
+      if(err) {
+          swal(
+              <div>
+                <h3>Something doesn't seem right</h3>        
+                <p>Please check your internet connection and try again</p>
+              </div>
+            )
+      }
+  })
+
    
   }
     render() {
         return this.state.articles.map((articlez) =>(
             <div>
-            <Articles key={articlez.id} 
+            <Articles 
+            id={articlez.id} 
             article = {articlez.article}  
             title={articlez.title} 
             url={articlez.url}

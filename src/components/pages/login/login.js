@@ -1,13 +1,22 @@
 import React from 'react';
 import LoginForm from './loginForm';
 import Welcome from './welcome';
+import {Redirect} from 'react-router-dom';
+import { loggedIn }   from '../../auth';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default function login() {
+
+  
     return (
         <div className="container-fluid ">
-        
+      
             <div className="row Main-login">
+            {
+            loggedIn() === true ? 
+             <Redirect to="/dashboard" />
+            : null
+            }
             <div className="col-lg-3">
                 </div>
                 <div className ="col-lg-3 Login-form-container  ">
