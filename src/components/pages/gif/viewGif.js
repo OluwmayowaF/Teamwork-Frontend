@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Gif from '../../../components/elements/gif'
 import Comment from '../../../components/elements/comment'
-import ArticleControl from '../../elements/articleControl'
+import GifControl from '../../elements/gifControl'
 import { viewGifUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
@@ -20,6 +20,18 @@ export class viewGif extends Component {
 
     componentDidMount = () =>{
         this.getGif()
+        this.checkOwner()
+    }
+
+    checkOwner = (ownerId) =>{
+        const thisUser = authUser.data.userId 
+        if (thisUser === ownerId){
+        this.setState({owner: true})
+        console.log(thisUser)
+        console.log(ownerId)
+            
+        }
+
     }
 
     getGif =() =>{
@@ -39,6 +51,7 @@ export class viewGif extends Component {
             this.setState({
                 gif:data.data
             })
+            this.checkOwner(this.state.gif.ownerid)
             this.setState({
                 loaded:true
             })
@@ -84,6 +97,38 @@ export class viewGif extends Component {
 
     }
 
+    deleteGif = (e) => {
+        //e.preventDefault();
+        const token = getToken();
+        const {gifid} = this.props.match.params
+        try{
+            fetch(viewGifUrl+gifid, {
+                method:'DELETE',
+                mode: 'cors',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": token
+                },
+            })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data){
+                    swal(`${data.data.message}`, {
+                        icon: "success",
+                      });
+                   console.log(data)
+                       this.props.history.push("/dashboard")
+                  
+                }
+            })
+
+        }catch{
+
+        }
+
+
+    }
+
 
     render() {
         return (
@@ -98,6 +143,13 @@ export class viewGif extends Component {
                 />:
                 null
 
+                }
+                {
+                    this.state.owner ?
+                    <GifControl 
+                    
+                    deleteGif={this.deleteGif}
+                    />:null
                 }
                 {  this.state.loaded ?
                     typeof this.state.gif.comments === 'object' ? 
