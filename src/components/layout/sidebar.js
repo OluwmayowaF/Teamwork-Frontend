@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { authUser } from '../auth'
 
 
 
@@ -11,13 +12,23 @@ function sidebar(props) {
     return (
         <div>
             <nav className="sidenav">
+            <div style={{ marginBottom:'50px'}}>
+                <Link style={{color:"#fff", fontSize:'16px',fontWeight:'300', textDecoration:'none'}} to="/dashboard/createEmployee">
+               Hi, {authUser.data.firstname} {authUser.data.lastname}
+                </Link>
+                </div>
+                {
+                authUser.data.role === 'admin' ?
                 <div style={{ marginBottom:'50px'}}>
                 <Link style={{color:"#fff", fontSize:'16px',fontWeight:'300', textDecoration:'none'}} to="/dashboard/createEmployee">
    
                
                 Create<br /> Employee
                 </Link>
-                </div>
+                </div>: null
+
+                }
+                
                 <div style={{ marginBottom:'50px'}}>
                 <Link style={{color:"#fff", fontSize:'16px', fontWeight:'300', textDecoration:'none'}} to="/dashboard/postarticle">
                

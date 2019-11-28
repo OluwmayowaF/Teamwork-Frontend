@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import Article from '../../../components/elements/article'
 import Comment from '../../../components/elements/comment'
+import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken } from '../../../components/auth'
+import { authUser } from '../../auth'
+
 
 export class viewArticle extends Component {
 
@@ -12,14 +15,28 @@ export class viewArticle extends Component {
         addcomment:' ',
         newcomment:null,
         commentAdded:false,
+        editarticle:'',
+        owner:false,
     }
 
     componentDidMount =() => {
         this.getArticle();
+        this.checkOwner();
 
     }
 
-    getArticle =() => {
+    checkOwner = (ownerId) =>{
+        const thisUser = authUser.data.userId 
+        if (thisUser === ownerId){
+        this.setState({owner: true})
+        console.log(thisUser)
+        console.log(ownerId)
+            
+        }
+
+    }
+
+    getArticle = () => {
         const {articleid} = this.props.match.params
 
         
@@ -37,8 +54,11 @@ export class viewArticle extends Component {
             .then(resp => resp.json())
             .then(data => {
                 if (data){
+                    
                     this.setState({article: data.data})
+                    this.checkOwner(this.state.article.ownerid)
                     this.setState({loaded: true})
+                    
                     console.log(data.data)
                   
                 }
@@ -49,6 +69,44 @@ export class viewArticle extends Component {
             console.log(error)
         }
     }
+    updatedArticle = (e) => {
+        this.setState({[e.target.name]: e.target.value})    
+
+    }
+
+    editArticle =(e) => {
+        e.preventDefault();
+        const token = getToken();
+        const {articleid} = this.props.match.params
+        try{
+            fetch(viewArticleUrl+articleid, {
+                method:'PATCH',
+                mode: 'cors',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": token
+                },
+                body: JSON.stringify({ 
+                  article: this.state.editarticle,
+              }),
+            })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data){
+                    this.getArticle()
+                    console.log(data.data)
+                  
+                }
+            })
+
+        }catch{
+
+        }
+
+
+    }
+
+   
 
 
     addComment = (e) => {
@@ -100,10 +158,19 @@ export class viewArticle extends Component {
                     article={this.state.article.article}
                     comment={this.state.article.comments}
                     date={this.state.article.createdOn}
+                    onChange={this.updatedArticle}
+                    
+                    isOwner={this.state.owner}
                     />
                    :
                     null
-                }{  this.state.loaded ?
+                }{
+                    this.state.owner ?
+                    <ArticleControl 
+                    editArticle={this.editArticle}
+                    />:null
+                }
+                {  this.state.loaded ?
                     typeof this.state.article.comments === 'object' ? 
                     this.state.article.comments.map((comment ) =>(
                 <Comment

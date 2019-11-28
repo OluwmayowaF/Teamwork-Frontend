@@ -1,7 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import ArticleControl from './articleControl'
 
 export default function article(props) {
+
+  
     return (
         
       <div className = "container">
@@ -12,11 +15,16 @@ export default function article(props) {
               <h3  >{props.title}</h3>
               <p >Written By: Author</p>
               <div className="form-group">
-              <textarea style={{background:'none', border:'none', overflow:'auto'}} className="form-control" rows="3" id="comment" 
-              value={props.article}
-              readOnly>
+              <textarea style={{background:'none', border:'none', overflow:'auto'}} 
+              className="form-control" rows="3" name="editarticle" 
+              defaultValue={props.article}
+              onChange={props.onChange}
+              
+              >
               
               </textarea>
+
+             
              
               
                

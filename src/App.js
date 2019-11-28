@@ -118,7 +118,10 @@ export class App extends Component {
             onChange={this.onChangeGif}  onSubmit={this.addGif}  
             />} />
 
-            <Route path="/dashboard/article/:articleid" component={ Viewarticle } />
+            <Route path="/dashboard/article/:articleid" 
+            component={ Viewarticle } />
+
+            
 
             <Footer />
             </div>
