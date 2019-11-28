@@ -17,18 +17,12 @@ export default function article(props) {
               readOnly>
               
               </textarea>
-              {
-                typeof props.comment === 'object' ?
-                props.comment.map((comments ) =>(
-                  <p key={comments.commentid}>{comments.comment}</p>
-                )):
-                <p>{props.comment}</p>
-              }
+             
               
                
               
               </div>
-                  <button>Comment</button>
+                 
             </section>
             </div>
             <div className="col">
