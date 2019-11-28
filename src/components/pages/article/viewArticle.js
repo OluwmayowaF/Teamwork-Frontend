@@ -4,7 +4,9 @@ import Comment from '../../../components/elements/comment'
 import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken } from '../../../components/auth'
-import { authUser } from '../../auth'
+import { authUser , loggedIn} from '../../auth'
+import { Redirect } from 'react-router-dom';
+import swal from '@sweetalert/with-react'
 
 
 export class viewArticle extends Component {
@@ -146,9 +148,47 @@ export class viewArticle extends Component {
 
     }
 
+    deleteArticle = (e) => {
+        //e.preventDefault();
+        const token = getToken();
+        const {articleid} = this.props.match.params
+        try{
+            fetch(viewArticleUrl+articleid, {
+                method:'DELETE',
+                mode: 'cors',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": token
+                },
+            })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data){
+                    swal(`${data.data.message}`, {
+                        icon: "success",
+                      });
+                   console.log(data)
+                       this.props.history.push("/dashboard")
+                      
+                
+                
+                  
+                }
+            })
+
+        }catch{
+
+        }
+
+
+    }
+
     render() {
         return (
             <div>
+            {
+            loggedIn() === false ? <Redirect to="/login" /> : null
+            }
                 {
                    
                     this.state.loaded ?
@@ -168,6 +208,7 @@ export class viewArticle extends Component {
                     this.state.owner ?
                     <ArticleControl 
                     editArticle={this.editArticle}
+                    deleteArticle={this.deleteArticle}
                     />:null
                 }
                 {  this.state.loaded ?

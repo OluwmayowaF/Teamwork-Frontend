@@ -15,7 +15,7 @@ export class liveFeed extends Component {
 
 
   componentDidMount(){
-    signedInUser()
+  //  signedInUser()
    const token = getToken();
     fetch(feedsUrl, {
       method: 'GET',
