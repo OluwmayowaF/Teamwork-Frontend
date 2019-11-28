@@ -3,8 +3,7 @@ import Article from '../../../components/elements/article'
 import Comment from '../../../components/elements/comment'
 import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
-import { getToken } from '../../../components/auth'
-import { authUser , loggedIn} from '../../auth'
+import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react'
 
@@ -169,9 +168,6 @@ export class viewArticle extends Component {
                       });
                    console.log(data)
                        this.props.history.push("/dashboard")
-                      
-                
-                
                   
                 }
             })

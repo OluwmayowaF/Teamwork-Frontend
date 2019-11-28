@@ -7,7 +7,8 @@ import Footer from './components/layout/Footer';
 import Createemployeepage from './components/pages/createEmployee/createEmployeePage';
 import Postarticles from './components/pages/addArticle/addArticle';
 import Postgifs from './components/pages/addGif/addGif';
-import Viewarticle from './components/pages/article/viewArticle'
+import ViewArticle from './components/pages/article/viewArticle'
+import ViewGif from './components/pages/gif/viewGif'
 import { addArticleUrl , addGifUrl,   } from './components/apis'
 import { getToken } from './components/auth'
 
@@ -119,7 +120,10 @@ export class App extends Component {
             />} />
 
             <Route path="/dashboard/article/:articleid" 
-            component={ Viewarticle } />
+            component={ ViewArticle } />
+
+            <Route path="/dashboard/gif/:gifid" 
+            component={ ViewGif } />
 
             
 

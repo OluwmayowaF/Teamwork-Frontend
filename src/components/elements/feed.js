@@ -21,7 +21,7 @@ function feed(props) {
                posted by {props.authorId} on {props.date} <br/>
                {
                 props.url  ?  
-                null
+                <Link to={`/dashboard/gif/${props.id}`}>View More</Link> 
                 :  <Link to={`/dashboard/article/${props.id}`}>View More</Link>  
 
                }
