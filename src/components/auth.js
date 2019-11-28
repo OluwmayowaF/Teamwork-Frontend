@@ -1,6 +1,6 @@
 
 
-   // const authUser =  JSON.parse(localStorage.getItem('user'));
+    export const authUser =  JSON.parse(localStorage.getItem('T_T_W'));
 
     export const saveUser = (user) =>{
         localStorage.setItem('T_T_W', JSON.stringify(user));
@@ -33,6 +33,14 @@
         this.props.history.push('/login');
         
     }
+
+    export const signedInUser = () => {
+        const id = authUser.data.userId
+        console.log(id)
+        return id
+    }
+
+    
 
 
 

@@ -7,9 +7,10 @@ import Footer from './components/layout/Footer';
 import Createemployeepage from './components/pages/createEmployee/createEmployeePage';
 import Postarticles from './components/pages/addArticle/addArticle';
 import Postgifs from './components/pages/addGif/addGif';
-import { addArticleUrl } from './components/apis'
-import { addGifUrl } from './components/apis'
+import Viewarticle from './components/pages/article/viewArticle'
+import { addArticleUrl , addGifUrl,   } from './components/apis'
 import { getToken } from './components/auth'
+
 //import Auth from './components/auth'
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -58,59 +59,69 @@ export class App extends Component {
             .then(data => { console.log(data)})
         }
 
-        onChangeGif = (e) => {
-            this.setState({[e.target.name]: e.target.value})    
+    onChangeGif = (e) => {
+        this.setState({[e.target.name]: e.target.value})    
+
+    }
+
+    addGif = (e) => {
+        e.preventDefault();
+        const token = getToken();
+        fetch(addGifUrl, 
+            {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": token
+                },
+                body: JSON.stringify({ 
+                title: this.state.title,
+                image: this.state.gif,
+                
+            }),
+                })
     
+                .then(resp => resp.json())
+                .then(data => { console.log(data)})
         }
 
-        addGif = (e) => {
-            e.preventDefault();
-            const token = getToken();
-            fetch(addGifUrl, 
-                {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: {
-                      "Content-type": "application/json; charset=UTF-8",
-                      "Authorization": token
-                  },
-                  body: JSON.stringify({ 
-                    title: this.state.title,
-                    image: this.state.gif,
-                   
-                }),
-                  })
-        
-                  .then(resp => resp.json())
-                  .then(data => { console.log(data)})
-            }
+    
 
 
     render(){
         return (
             <div>
+               
             <Router>
             <div className="App">
             
             <Header />
-            
+            <Route exact path="/" component={ Login } />
             <Route path="/login" component={ Login } />
+
             <Route exact path="/dashboard"  
             render={(props) => <Dashboard {...props} logOut={this.logOut}   />}  />
+
             <Route path="/dashboard/createemployee" 
             render={(props) => <Createemployeepage {...props} logOut = {this.logOut}  />} />
+
             <Route path="/dashboard/postarticle" 
             render={(props) => <Postarticles {...props} 
             logOut = {this.logOut} title={this.state.title} article={this.state.article} 
             category={this.state.category} onChange={this.onChangeArticle}  onSubmit={this.addArticle}  
             />} />
-            <Route path="/dashboard/gif" 
+
+            <Route path="/dashboard/postgif" 
             render={(props) => <Postgifs {...props} 
             logOut = {this.logOut} title={this.state.title} gif={this.state.gif} 
             onChange={this.onChangeGif}  onSubmit={this.addGif}  
             />} />
+
+            <Route path="/dashboard/article/:articleid" component={ Viewarticle } />
+
             <Footer />
-          </div>
+            </div>
             </Router>
                 
             </div>

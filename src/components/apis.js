@@ -12,3 +12,5 @@ export const addArticleUrl = `${baseUrl}/articles`
 
 export const addGifUrl = `${baseUrl}/gifs`
 
+export const viewArticleUrl = `${baseUrl}/articles/`
+

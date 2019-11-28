@@ -1,8 +1,12 @@
 import React from 'react';
-import '../../App.css'
+import '../../App.css';
+import { Link } from 'react-router-dom'
+
 
 
 function feed(props) {
+
+   
     return (
         <div className='articleContainer'  >
             <h3>
@@ -14,10 +18,16 @@ function feed(props) {
                 : <p>{props.article}  </p>                
             }
             <h4>
-               posted by {props.authorId} on {props.date}
+               posted by {props.authorId} on {props.date} <br/>
+               {
+                props.url  ?  
+                null
+                :  <Link to={`/dashboard/article/${props.id}`}>View More</Link>  
+
+               }
+              
             </h4>
-            
-            
+             
         </div>
     )
 }

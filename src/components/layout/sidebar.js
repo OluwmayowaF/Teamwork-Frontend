@@ -26,7 +26,7 @@ function sidebar(props) {
                 </Link>
                 </div>
                 <div style={{ marginBottom:'50px'}}>
-                <Link style={{color:"#fff", fontSize:'18px',fontWeight:'300', textDecoration:'none'}} to="/dashboard/gif">
+                <Link style={{color:"#fff", fontSize:'18px',fontWeight:'300', textDecoration:'none'}} to="/dashboard/postgif">
                 
                
                 Add Gif

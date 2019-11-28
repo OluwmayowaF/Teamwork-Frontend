@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Feeds from '../../elements/feed'
 import { getToken }   from '../../auth';
+import { signedInUser }   from '../../auth';
 import { Redirect } from 'react-router-dom'
 import { feedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
@@ -14,7 +15,7 @@ export class liveFeed extends Component {
 
 
   componentDidMount(){
-    
+    signedInUser()
    const token = getToken();
     fetch(feedsUrl, {
       method: 'GET',
