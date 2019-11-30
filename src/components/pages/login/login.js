@@ -3,7 +3,7 @@ import LoginForm from './loginForm';
 import Welcome from './welcome';
 import {Redirect} from 'react-router-dom';
 import { loggedIn }   from '../../auth';
-import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default function login() {
 

@@ -5,7 +5,8 @@ import GifControl from '../../elements/gifControl'
 import { viewGifUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
-import swal from '@sweetalert/with-react'
+import swal from '@sweetalert/with-react';
+import Sidebar from '../../layout/sidebar'
 
 export class viewGif extends Component {
 
@@ -132,16 +133,32 @@ export class viewGif extends Component {
 
     render() {
         return (
-            <div>
+            <div >
+            {
+            loggedIn() === false ? <Redirect to="/login" /> : null
+            }
+            <Sidebar style={{width:'10%',  float:'right'}}  />
+            <div className="container"  style={{float:'right', width:'80%'}}>
                 {
                     this.state.loaded ?
+                    <React.Fragment>
                     <Gif 
                 id={this.state.gif.id}
                 date={this.state.gif.createdOn}
                 title={this.state.gif.title}
                 url={this.state.gif.url}
-                />:
-                null
+                />
+                <form onSubmit={this.addComment}>
+                    <input style={this.commentBox} name='addcomment'type='text'
+                    value={this.state.addcomment}
+                    onChange={this.onChange}>
+                    </input>
+
+                    <button>Comment</button>
+
+                </form>
+                </React.Fragment>
+                :null
 
                 }
                 {
@@ -164,16 +181,8 @@ export class viewGif extends Component {
                     :
                     null
                 }
-                <form onSubmit={this.addComment}>
-                    <input style={this.commentBox} name='addcomment'type='text'
-                    value={this.state.addcomment}
-                    onChange={this.onChange}>
-                    </input>
-
-                    <button>Comment</button>
-
-                </form>
-           
+              
+                </div>
                 
             </div>
         )

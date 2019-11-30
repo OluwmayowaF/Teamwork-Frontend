@@ -7,24 +7,19 @@ import Footer from './components/layout/Footer';
 import Createemployeepage from './components/pages/createEmployee/createEmployeePage';
 import Postarticles from './components/pages/addArticle/addArticle';
 import Postgifs from './components/pages/addGif/addGif';
+import PostAgif from './components/pages/addGif/gifadd'
 import ViewArticle from './components/pages/article/viewArticle'
 import ViewGif from './components/pages/gif/viewGif'
-import { addArticleUrl , addGifUrl,   } from './components/apis'
+import Myposts from './components/pages/dashboard/myposts'
+import { addGifUrl   } from './components/apis'
 import { getToken } from './components/auth'
-
-//import Auth from './components/auth'
-
-import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 export class App extends Component {
 
     
     state ={
-        title: '',
-        article: '',
-        gif: '',
-        category: 'General',
+        loggedIn:false
     }
 
     logOut = () => {
@@ -32,33 +27,7 @@ export class App extends Component {
        return <Redirect to={"/login"}/>
     }
 
-    onChangeArticle = (e) => {
-        this.setState({[e.target.name]: e.target.value})    
-
-    }
-
-
-    addArticle = (e) => {
-        e.preventDefault();
-        const token = getToken();
-        fetch(addArticleUrl, 
-            {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                "Content-type": "application/json; charset=UTF-8",
-                "Authorization": token
-            },
-            body: JSON.stringify({ 
-                title: this.state.title,
-                article: this.state.article,
-                tag: this.state.category,
-            }),
-            })
-
-            .then(resp => resp.json())
-            .then(data => { console.log(data)})
-        }
+   
 
     onChangeGif = (e) => {
         this.setState({[e.target.name]: e.target.value})    
@@ -68,6 +37,8 @@ export class App extends Component {
     addGif = (e) => {
         e.preventDefault();
         const token = getToken();
+       
+        
         fetch(addGifUrl, 
             {
                 method: 'POST',
@@ -76,36 +47,47 @@ export class App extends Component {
                     "Content-type": "application/json; charset=UTF-8",
                     "Authorization": token
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify( { 
+
+                
                 title: this.state.title,
                 image: this.state.gif,
                 
-            }),
+            },)
                 })
     
                 .then(resp => resp.json())
                 .then(data => { console.log(data)})
-        }
+                
+    }
+
+
+    //UserName = `${authUser.data.firstname} ${authUser.data.lastname}`
 
     
 
 
     render(){
         return (
-            <div>
+             <React.Fragment>
                
             <Router>
-            <div className="App">
+           
             
-            <Header />
+            <Header logout={this.logOut} />
+            
             <Route exact path="/" component={ Login } />
             <Route path="/login" component={ Login } />
 
             <Route exact path="/dashboard"  
-            render={(props) => <Dashboard {...props} logOut={this.logOut}   />}  />
+            render={(props) => <Dashboard {...props} logOut={this.logOut} UserName={this.UserName}  />}  />
+
+            <Route exact path="/dashboard/myposts"  
+            render={(props) => <Myposts {...props} logOut={this.logOut} UserName={this.UserName}  />}  />
+
 
             <Route path="/dashboard/createemployee" 
-            render={(props) => <Createemployeepage {...props} logOut = {this.logOut}  />} />
+            render={(props) => <Createemployeepage {...props} logOut = {this.logOut} UserName={this.UserName} />} />
 
             <Route path="/dashboard/postarticle" 
             render={(props) => <Postarticles {...props} 
@@ -125,13 +107,16 @@ export class App extends Component {
             <Route path="/dashboard/gif/:gifid" 
             component={ ViewGif } />
 
+            <Route path="/dashboard/addagif" 
+            component={ PostAgif } />
+
             
 
             <Footer />
-            </div>
+            
             </Router>
                 
-            </div>
+            </React.Fragment>
         )
     }
 

@@ -1,153 +1,125 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-}
-
-.App-header {
-    position: fixed;
-    background-color: #0659FB;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    padding-left: 3%;
-    width: 100%;
-}
-
-.App-header img {
-    justify-items: flex-start;
-    min-width: 10%;
-}
-
-.App-link {
-    color: #09d3ac;
-}
-
-.App-footer {
-    background-color: #0659FB;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: white;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-.Main-login {
-    /*  background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1574372803/TeamWorkFE/35237_br5xyn.jpg), rgba(0, 0, 0, 0.5);
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .logo {
+        display: flex;
+        width: 50%;
+        float: left !important;
+    }
+    
+    .Main-login {
+        /*  background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1574372803/TeamWorkFE/35237_br5xyn.jpg), rgba(0, 0, 0, 0.5);
     background-size: cover;
     background-repeat: no-repeat; */
-    margin: 70px;
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
-}
-
-.Login-form-container {
-    color: #fff;
-    height: 65vh;
-    background: #528CFD;
-    padding: 0 2% !important;
-    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
-}
-
-.Login-form-container p {
-    padding-bottom: 35px;
-}
-
-.Login-form-container h3 {
-    font-size: 30px;
-    line-height: 44px;
-    padding: 10px 0 2px 0;
-}
-
-.Login-form-container label {
-    float: left !important;
-    font-size: 20px;
-    font-weight: 100;
-}
-
-.Welcome-message-container {
-    margin-top: 35px;
-    height: 55vh;
-    background: #528CFD;
-    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
-    padding: 10% 2% 0 2% !important;
-}
-
-.Login-btn {
-    color: #528CFD;
-    margin: auto;
-    width: 120px;
-    height: 37px;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-}
-
-.error-message {
-    font-size: 18px;
-    color: red;
-    padding: 0px !important;
-}
-
-
-/* The sidebar menu */
-
-.sidenav {
-    height: 100%;
-    /* Full-height: remove this if you want "auto" height */
-    width: 150px;
-    /* Set the width of the sidebar */
-    position: fixed;
-    /* Fixed Sidebar (stay in place on scroll) */
-    /* Stay on top */
-    top: 60px;
-    /* Stay at the top */
-    left: 0;
-    background-color: #528CFD;
-    /* Black */
-    overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 120px;
-}
-
-.articleContainer {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    min-height: 314px;
-    width: 864px;
-    box-shadow: #0659FB;
-    margin: auto;
-    margin-bottom: 67px;
-}
-
-.articleContainer img {
-    height: 200px;
-    width: 40%;
-}
-
-@media only screen and (max-width: 600px) {
-    .Welcome-message-container {
-        margin-top: 0;
-        height: fit-content;
-        padding: 10px !important;
+        margin: 70px;
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
     }
-}
+    
+    .Login-form-container {
+        color: #fff;
+        height: 65vh;
+        background: #528CFD;
+        padding: 0 2% !important;
+        box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+    }
+    
+    .Login-form-container p {
+        padding-bottom: 35px;
+    }
+    
+    .Login-form-container h3 {
+        font-size: 30px;
+        line-height: 44px;
+        padding: 10px 0 2px 0;
+    }
+    
+    .Login-form-container label {
+        float: left !important;
+        font-size: 20px;
+        font-weight: 100;
+    }
+    
+    .Welcome-message-container {
+        margin-top: 35px;
+        height: 55vh;
+        background: #528CFD;
+        box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+        padding: 10% 2% 0 2% !important;
+    }
+    
+    .Login-btn {
+        color: #528CFD;
+        margin: auto;
+        width: 120px;
+        height: 37px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+    }
+    
+    .error-message {
+        font-size: 18px;
+        color: red;
+        padding: 0px !important;
+    }
+    /* The sidebar menu */
+    
+    .sidenav {
+        min-height: 100vh !important;
+        top: 0 !important;
+        font-size: 18px;
+        /* Full-height: remove this if you want "auto" height */
+        /* Fixed Sidebar (stay in place on scroll) */
+    }
+    
+    .userDetails {
+        text-align: center;
+        padding-bottom: 10%;
+    }
+    
+    .linkWrapper {
+        text-align: center;
+        padding: 15% 0;
+    }
+    
+    .linkStyle {
+        color: white;
+        font-size: 18px;
+        font-weight: 300;
+        text-decoration: none;
+    }
+    
+    .linkStyle:hover {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .articleContainer {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        min-height: 150px;
+        width: 464px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .articleContainer img {
+        height: 200px;
+        width: 40%;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .Welcome-message-container {
+            margin-top: 0;
+            height: fit-content;
+            padding: 10px !important;
+        }
+    }

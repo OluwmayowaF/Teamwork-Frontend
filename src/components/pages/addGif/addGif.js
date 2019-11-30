@@ -12,9 +12,9 @@ function addGif(props) {
         {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Sidebar logOut={props.logOut} />
-            
-            <AddGifForm  title={props.title} gif={props.gif}  
+          
+            <Sidebar />
+            <AddGifForm  title={props.title} gif={props.gif}  form={props.form}
             onChange={props.onChange}  onSubmit={props.onSubmit}  />
             
             

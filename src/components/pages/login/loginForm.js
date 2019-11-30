@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
 import { saveUser }   from '../../auth';
 import { loginUrl } from '../../apis'
 import swal from '@sweetalert/with-react'

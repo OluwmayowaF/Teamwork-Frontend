@@ -2,8 +2,9 @@ import React from 'react'
 
 export default function addGifForm(props) {
     return (
-        <div>  
-        <form onSubmit ={props.onSubmit} style={{width: '80%', paddingTop:'100px', paddingLeft:'200px'}}>
+        <div style={{width: '80%', float:'right', padding:'5%'}}>  
+        <h4 style={{width:'50%'}} className='text-center text-primary'>Post Gif</h4>
+        <form onSubmit ={props.onSubmit} style={{width:'50%'}} >
                 <div className="form-group">
                 <label htmlFor="title">Title</label>
                 <input type= "text"

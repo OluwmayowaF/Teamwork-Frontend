@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Article from '../../../components/elements/article'
 import Comment from '../../../components/elements/comment'
+import Sidebar from '../../layout/sidebar'
 import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react'
+import {ClipLoader} from 'react-spinners'
 
 
 export class viewArticle extends Component {
@@ -20,9 +22,12 @@ export class viewArticle extends Component {
         owner:false,
     }
 
+    token = getToken();
+
     componentDidMount =() => {
         this.getArticle();
         this.checkOwner();
+        
 
     }
 
@@ -30,44 +35,38 @@ export class viewArticle extends Component {
         const thisUser = authUser.data.userId 
         if (thisUser === ownerId){
         this.setState({owner: true})
-        console.log(thisUser)
-        console.log(ownerId)
-            
         }
-
     }
+  
 
     getArticle = () => {
         const {articleid} = this.props.match.params
-
-        
-        const token = getToken();
-         
         try{
             fetch(viewArticleUrl+articleid, {
                 method:'GET',
                 mode: 'cors',
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
-                    "Authorization": token
+                    "Authorization": this.token
                 },
             })
             .then(resp => resp.json())
             .then(data => {
-                if (data){
-                    
+                if (data){ 
                     this.setState({article: data.data})
                     this.checkOwner(this.state.article.ownerid)
                     this.setState({loaded: true})
-                    
-                    console.log(data.data)
-                  
                 }
             })
 
 
         }catch(error){
-            console.log(error)
+            swal(
+                <div>
+                  <h3>Something doesn't seem right</h3>        
+                  <p>Please check your internet connection and try again</p>
+                </div>
+              )
         }
     }
     updatedArticle = (e) => {
@@ -181,25 +180,35 @@ export class viewArticle extends Component {
 
     render() {
         return (
-            <div>
+            <div >
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
+            <Sidebar style={{width:'10%',  float:'right'}}  />
+            <div className="container "  style={{float:'right', width:'80%'}}>
                 {
                    
                     this.state.loaded ?
-                    <Article 
+                    <Article  
                     id={this.state.article.id}
                     title={this.state.article.title}
                     article={this.state.article.article}
                     comment={this.state.article.comments}
                     date={this.state.article.createdOn}
                     onChange={this.updatedArticle}
-                    
+                    author = {this.state.article.ownername}
                     isOwner={this.state.owner}
                     />
                    :
-                    null
+                   <div className='sweet-loading' style={{margin:'20% 50%'}}>
+              <ClipLoader
+             //css={override}
+              sizeUnit={"px"}
+               size={200}
+              color={'#0659FB'}
+               loading={this.state.loading}
+               />
+      </div> 
                 }{
                     this.state.owner ?
                     <ArticleControl 
@@ -230,7 +239,7 @@ export class viewArticle extends Component {
                     <button>Comment</button>
 
                 </form>
-                
+                </div>
             </div>
         )}  
 

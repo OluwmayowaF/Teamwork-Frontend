@@ -3,24 +3,25 @@ import Feeds from '../../elements/feed'
 import { getToken }   from '../../auth';
 //import { signedInUser }   from '../../auth';
 import { Redirect } from 'react-router-dom'
-import { feedsUrl } from '../../apis'
+import { myfeedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
 import { ClipLoader } from 'react-spinners';
+import Sidebar from '../../layout/sidebar'
 
 
-export class liveFeed extends Component {
+export class myposts extends Component {
     state={
       feeds :[
 
       ],
-      loaded: false,
+      isloaded: false,
     }
 
 
   componentDidMount(){
   //  signedInUser()
    const token = getToken();
-    fetch(feedsUrl, {
+    fetch(myfeedsUrl, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -32,7 +33,7 @@ export class liveFeed extends Component {
     .then(data => { 
       if (data){
         this.setState({feeds: data.data})
-        this.setState({loaded:true})
+        this.setState({isloaded:true})
         
       } if (data.status === '401'){
         return   <Redirect to="/login" />
@@ -55,9 +56,12 @@ export class liveFeed extends Component {
   }
     render() {
         return (
-          <div >
+          <React.Fragment >
+          <Sidebar logOut={this.props.logOut}  />
+          <div>
             {
-            this.state.loaded ?
+            this.state.isloaded 
+            ?
             this.state.feeds.map((feed , key) =>(
             <div key = {
               feed.url ? 'gif'+feed.id : 'article'+feed.id
@@ -80,12 +84,13 @@ export class liveFeed extends Component {
                />
       </div> 
             }
-          </div>
+            </div>
+          </React.Fragment>
         )
     }
    
         
 }
 
-export default liveFeed
+export default myposts
 

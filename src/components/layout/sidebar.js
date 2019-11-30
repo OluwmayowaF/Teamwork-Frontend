@@ -1,51 +1,69 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-import { Redirect } from 'react-router-dom';
-import { loggedIn }   from '../auth'
+import { authUser } from '../auth'
 
 
 
 
 function sidebar(props) {
-
     
     return (
-        <div>
-        {
-            loggedIn() === false ? <Redirect to="/login" /> : null
-            }
-            
-            <nav className="sidenav">
-            <div style={{ marginBottom:'50px'}}>
-               
-                
-                <div style={{ marginBottom:'50px'}}>
-                <Link style={{color:"#fff", fontSize:'16px', fontWeight:'300', textDecoration:'none'}} to="/dashboard/postarticle">
-               
-               
-                Add Article
+        <aside className="col-md-2 d-none d-md-block bg-light sidebar" style={{width:'20%', height:'100vh', float:'left', paddingTop:'100px'}}  >
+        <div className="sidebar-stick"  >
+        <ul className="nav flex-column">
+          <li className="nav-item">
+            <Link className="nav-link pb-5" to="/dashboard/createEmployee">
+                <h3 className='text-center'>Hi, {props.UserName}
+                </h3>
                 </Link>
-                </div>
-                <div style={{ marginBottom:'50px'}}>
-                <Link style={{color:"#fff", fontSize:'18px',fontWeight:'300', textDecoration:'none'}} to="/dashboard/postgif">
+          </li>
+          
+          <li className="nav-item pb-3">
+          <Link className="nav-link text-center" to="/dashboard">
+                 Home
+                </Link>
+          </li>
+          <li className="nav-item pb-3">
+          <Link className="nav-link text-center" to="/dashboard/myposts">
+                 My Posts
+                </Link>
+          </li>
+         
+          {
+                authUser.data.role === 'admin' ?
+                <li className="nav-item pb-3">
+                <Link className="nav-link text-center" to="/dashboard/createEmployee">
+                Create<br /> Employee
+                </Link>
+                </li>: null
+
+                }
+         
+          <li className="nav-item pb-3 text-center">
+          <Link className="nav-link" to="/dashboard/postarticle">
+               Add Article
+               </Link>
+          </li>
+          <li className="nav-item pb-3 text-center">
+          <Link className="nav-link" to="/dashboard/postgif">
                 
                
                 Add Gif
                 </Link>
-                </div>
-                <div style={{ marginBottom:'50px'}}>
-                <Link style={{color:"#fff", fontSize:'18px', fontWeight:'300', textDecoration:'none'}} onClick={props.logOut} to="#">
+          </li>
+          <li className="nav-item pb-3 text-center">
+          <Link className="av-link" onClick={props.logOut} to="#">
                 
                
                 Logout
                 </Link>
-                </div>
-</div>
-            </nav>
-            
+            </li>
+        </ul>
+
         </div>
+    </aside>
+        
     )
 
    

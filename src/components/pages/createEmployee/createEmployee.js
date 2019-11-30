@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import { withRouter } from 'react-router-dom';
 import '../../../App.css';
 import { createEmployeeUrl } from '../../apis'

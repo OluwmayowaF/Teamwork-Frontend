@@ -2,7 +2,8 @@ import React from 'react'
 
 export default function addArticleform(props) {
     return (
-        <div  style={{width: '80%', paddingTop:'100px', paddingLeft:'200px'}}>
+        <div  style={{width: '80%', float:'right', padding:'5%'}}>
+            <h4 className='text-center text-primary'>Add an Article</h4>
             <form onSubmit ={props.onSubmit}>
                 <div className="form-group">
                 <label htmlFor="title">Title</label>
@@ -16,10 +17,11 @@ export default function addArticleform(props) {
                 </div>
                
                 <div className="form-group">
-                <label htmlFor="article">article</label>
-                <input type= "textarea"
+                <label htmlFor="article">Article</label>
+                <textarea 
                 name = "article" 
-                placeholder="Artcle details"
+                placeholder="Start Writting..."
+                rows='5'
                 value={props.article}
                 onChange={props.onChange} 
                 className="form-control"
@@ -42,7 +44,7 @@ export default function addArticleform(props) {
                
                 <div className="form-group">
                 <input type="submit"
-                value='submit'
+                value={props.loginUx}
                 className="Login-btn"
                 />
                 </div>
