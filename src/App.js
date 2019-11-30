@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/layout/Header';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Login from './components/pages/login/login';
 import Dashboard from './components/pages/dashboard/dashboard';
 import Footer from './components/layout/Footer';
@@ -75,7 +75,7 @@ export class App extends Component {
            
             
             <Header logout={this.logOut} />
-            
+            <Switch>
             <Route exact path="/" component={ Login } />
             <Route path="/login" component={ Login } />
 
@@ -110,7 +110,7 @@ export class App extends Component {
             <Route path="/dashboard/addagif" 
             component={ PostAgif } />
 
-            
+            </Switch>
 
             <Footer />
             
