@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { authUser } from '../auth'
+import { authUser, loggedIn} from '../auth'
 
 
 
@@ -12,12 +12,18 @@ function sidebar(props) {
         <aside className="col-md-2 d-none d-md-block bg-light sidebar" style={{width:'20%', height:'100vh', float:'left', paddingTop:'100px'}}  >
         <div className="sidebar-stick"  >
         <ul className="nav flex-column">
-          <li className="nav-item">
-            <Link className="nav-link pb-5" to="/dashboard/createEmployee">
+        {
+            loggedIn() === false ? null :
+            <li className="nav-item">
+            <Link className="nav-link pb-5" to="#">
                 <h3 className='text-center'>Hi, {props.UserName}
                 </h3>
                 </Link>
           </li>
+            }
+
+            
+          
           
           <li className="nav-item pb-3">
           <Link className="nav-link text-center" to="/dashboard">
@@ -70,7 +76,8 @@ function sidebar(props) {
 }
 //Proptypes
 sidebar.propTypes = {
-    logOut: PropTypes.func.isRequired
+    logOut: PropTypes.func.isRequired,
+    UserName: PropTypes.string.isRequired
  
 }
 

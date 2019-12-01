@@ -35,7 +35,8 @@ export class dashboard extends Component {
 
 //Proptypes
 dashboard.propTypes = {
-    logOut: PropTypes.func.isRequired
+    logOut: PropTypes.func.isRequired,
+    UserName: PropTypes.string.isRequired,
  
 }
 

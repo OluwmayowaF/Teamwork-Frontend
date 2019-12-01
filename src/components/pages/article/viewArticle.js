@@ -6,8 +6,9 @@ import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
-import swal from '@sweetalert/with-react'
-import {ClipLoader} from 'react-spinners'
+import swal from '@sweetalert/with-react';
+import {ClipLoader} from 'react-spinners';
+import PropTypes from 'prop-types';
 
 
 export class viewArticle extends Component {
@@ -184,7 +185,7 @@ export class viewArticle extends Component {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Sidebar style={{width:'10%',  float:'right'}}  />
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             <div className="container "  style={{float:'right', width:'80%'}}>
                 {
                    
@@ -248,5 +249,10 @@ export class viewArticle extends Component {
 
         }
 }
-
+//Proptypes
+viewArticle.propTypes = {
+    logOut: PropTypes.func.isRequired,
+    UserName: PropTypes.string.isRequired,
+ 
+}
 export default viewArticle

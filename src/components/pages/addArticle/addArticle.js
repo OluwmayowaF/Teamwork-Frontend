@@ -15,7 +15,7 @@ export class addArticle extends Component{
         title: '',
         article: '',
         category: 'General',
-        loginBtn: 'Post Article',
+        addBtn: 'Post Article',
     }
 
     onChangeArticle = (e) => {
@@ -25,7 +25,7 @@ export class addArticle extends Component{
 
 
     addArticle = (e) => {
-        this.setState({loginBtn: 'Posting..'
+        this.setState({addBtn: 'Posting..'
       })
         e.preventDefault();
         const token = getToken();
@@ -46,7 +46,7 @@ export class addArticle extends Component{
 
             .then(resp => resp.json())
             .then(data => { 
-                this.setState({loginBtn: 'Post Article'})
+                this.setState({addBtn: 'Post Article'})
                 if (data.status === 'error'){
                 swal({
                     
@@ -83,10 +83,10 @@ export class addArticle extends Component{
         {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Sidebar />
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
           
             <AddArticleForm  title={this.state.title} article={this.state.article} category={this.state.category} 
-            onChange={this.onChangeArticle}  onSubmit={this.addArticle} loginUx={this.state.loginBtn} />
+            onChange={this.onChangeArticle}  onSubmit={this.addArticle} AddBtnUx={this.state.addBtn} />
             
             
         </div>
@@ -96,7 +96,8 @@ export class addArticle extends Component{
 
 //Proptypes
 addArticle.propTypes = {
-    logOut: PropTypes.func.isRequired
+    logOut: PropTypes.func.isRequired,
+    UserName: PropTypes.string.isRequired
  
 }
 

@@ -7,7 +7,7 @@ import { myfeedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
 import { ClipLoader } from 'react-spinners';
 import Sidebar from '../../layout/sidebar'
-
+import PropTypes from 'prop-types';
 
 export class myposts extends Component {
     state={
@@ -32,6 +32,7 @@ export class myposts extends Component {
     .then(resp => resp.json())
     .then(data => { 
       if (data){
+        console.log(data)
         this.setState({feeds: data.data})
         this.setState({isloaded:true})
         
@@ -57,7 +58,7 @@ export class myposts extends Component {
     render() {
         return (
           <React.Fragment >
-          <Sidebar logOut={this.props.logOut}  />
+          <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
           <div>
             {
             this.state.isloaded 
@@ -70,7 +71,7 @@ export class myposts extends Component {
             id={feed.id} 
             article = {feed.article}  
             title={feed.title} 
-            url={feed.url}
+            url={feed.imageurl}
             date={feed.createdon}
             authorId={feed.authorid}/>
             </div>
@@ -92,5 +93,10 @@ export class myposts extends Component {
         
 }
 
+myposts.propTypes = {
+  logOut: PropTypes.func.isRequired,
+  UserName: PropTypes.string.isRequired,
+
+}
 export default myposts
 

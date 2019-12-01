@@ -6,7 +6,8 @@ import { viewGifUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
-import Sidebar from '../../layout/sidebar'
+import Sidebar from '../../layout/sidebar';
+import PropTypes from 'prop-types';
 
 export class viewGif extends Component {
 
@@ -137,7 +138,7 @@ export class viewGif extends Component {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Sidebar style={{width:'10%',  float:'right'}}  />
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             <div className="container"  style={{float:'right', width:'80%'}}>
                 {
                     this.state.loaded ?
@@ -187,6 +188,13 @@ export class viewGif extends Component {
             </div>
         )
     }
+}
+
+//Proptypes
+viewGif.propTypes = {
+    logOut: PropTypes.func.isRequired,
+    UserName: PropTypes.string.isRequired,
+ 
 }
 
 export default viewGif

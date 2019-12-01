@@ -5,7 +5,7 @@ export default function gifControl(props) {
     const confirmDelete = () =>{
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this gif file!",
             icon: "warning",
             buttons: true,
             dangerMode: true,

@@ -13,7 +13,7 @@ function addGif(props) {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
           
-            <Sidebar />
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             <AddGifForm  title={props.title} gif={props.gif}  form={props.form}
             onChange={props.onChange}  onSubmit={props.onSubmit}  />
             
@@ -25,8 +25,8 @@ function addGif(props) {
 }
 //Proptypes
 addGif.propTypes = {
-    logOut: PropTypes.func.isRequired
- 
+    logOut: PropTypes.func.isRequired,
+    UserName: PropTypes.string.isRequired
 }
 
 export default withRouter(addGif)

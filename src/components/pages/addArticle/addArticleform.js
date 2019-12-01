@@ -44,7 +44,7 @@ export default function addArticleform(props) {
                
                 <div className="form-group">
                 <input type="submit"
-                value={props.loginUx}
+                value={props.AddBtnUx}
                 className="Login-btn"
                 />
                 </div>
