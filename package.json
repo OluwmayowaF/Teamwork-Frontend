@@ -2,7 +2,7 @@
     "name": "teamwork-frontend",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://teamwork-frontend.firebaseapp.com/",
+    "homepage": "https://teamwork-frontend.firebaseapp.com/login",
     "dependencies": {
         "@sweetalert/with-react": "^0.1.1",
         "gh-pages": "^2.1.1",

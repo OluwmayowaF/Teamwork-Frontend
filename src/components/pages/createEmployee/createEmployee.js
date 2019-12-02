@@ -50,7 +50,7 @@ export class createEmployee extends Component {
     //
     render() {
         return (
-            <div  style={{marginLeft:"250px", marginRight:"150px"}}>
+            <div style={{width: '80%', float:'right', padding:'5%'}}>
             <form onSubmit ={this.onSubmit}>
             <div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
                 <label htmlFor="firstname">Firstname</label>

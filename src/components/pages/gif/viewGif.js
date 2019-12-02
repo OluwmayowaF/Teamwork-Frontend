@@ -193,7 +193,7 @@ export class viewGif extends Component {
 //Proptypes
 viewGif.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired,
+    // UserName: PropTypes.string.isRequired,
  
 }
 

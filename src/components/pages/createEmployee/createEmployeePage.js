@@ -13,7 +13,7 @@ function createEmployeePage(props) {
        
            
             <CreateEmployee />
-            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+            <Sidebar logOut={props.logOut} UserName={props.UserName} />
         </div>
     )
 }
@@ -21,7 +21,7 @@ function createEmployeePage(props) {
 //Proptypes
 createEmployeePage.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired,
+    // UserName: PropTypes.string.isRequired,
  
 }
 export default withRouter(createEmployeePage)

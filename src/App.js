@@ -11,10 +11,27 @@ import PostAgif from './components/pages/addGif/gifadd'
 import ViewArticle from './components/pages/article/viewArticle'
 import ViewGif from './components/pages/gif/viewGif'
 import Myposts from './components/pages/dashboard/myposts'
-import { authUser } from './components/auth'
+ import { authUser, loggedIn} from './components/auth'
 import './App.css';
 
 export class App extends Component {
+
+    state = {
+        loggedIn:false,
+    }
+
+    componentDidMount =() =>{
+        this.checkLoginStatus();
+    }
+
+    checkLoginStatus = () => {
+        if(loggedIn === true ){
+            this.setState({
+                loggedIn:true
+            })
+        }
+
+    }
 
 
     logOut = () => {
@@ -22,7 +39,7 @@ export class App extends Component {
        return <Redirect to={"/login"}/>
     }
 
-    UserName = `${authUser.data.firstname} ${authUser.data.lastname}`
+    
 
     
 
@@ -36,6 +53,7 @@ export class App extends Component {
             
             <Header logout={this.logOut} />
             <Switch>
+            {this.checkLoginStatus()}    
             <Route exact path="/" component={ Login } />
             <Route path="/login" component={ Login } />
 
@@ -43,7 +61,7 @@ export class App extends Component {
             render={(props) => <Dashboard {...props} logOut={this.logOut} UserName={this.UserName}  />}  />
 
             <Route exact path="/dashboard/myposts"  
-            render={(props) => <Myposts {...props} logOut={this.logOut} UserName={this.UserName}  />}  />
+            render={(props) => <Myposts {...props} logOut={this.logOut} UserName={this.UserName} />}  />
 
 
             <Route path="/dashboard/createemployee" 

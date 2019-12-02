@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom';
 import { loggedIn }   from '../../auth';
 
 
-export default function login() {
+export default function login(props) {
 
   
     return (
@@ -20,7 +20,7 @@ export default function login() {
             <div className="col-lg-3">
                 </div>
                 <div className ="col-lg-3 Login-form-container  ">
-                    <LoginForm />
+                    <LoginForm loggedIn={props.loggedIn}/>
                 </div>
                 <div className="col-lg-3 Welcome-message-container " >
                     <Welcome />

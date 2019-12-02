@@ -25,8 +25,7 @@ export class login extends Component {
        
         this.setState({[e.target.name]: e.target.value})       
     }
-   
-   
+
     // Validate Form 
 
     validEmail= (e) => {
@@ -84,7 +83,6 @@ export class login extends Component {
     
             if(data.status === 'success' ){
                 saveUser(data)
-              
                 this.props.history.push('/dashboard');
             }else if(data.error === 'Invalid Credentials' ){
                 this.setState({userError: true});

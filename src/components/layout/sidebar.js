@@ -7,7 +7,17 @@ import { authUser, loggedIn} from '../auth'
 
 
 function sidebar(props) {
-    
+   /* const GetUserName = () =>{
+    let UserName = `${authUser.data.firstname} ${authUser.data.lastname}`;
+     return  UserName
+    }*/
+
+    let UserName = `${authUser.data.firstname} ${authUser.data.lastname}`;
+             
+     
+  
+
+   
     return (
         <aside className="col-md-2 d-none d-md-block bg-light sidebar" style={{width:'20%', height:'100vh', float:'left', paddingTop:'100px'}}  >
         <div className="sidebar-stick"  >
@@ -16,7 +26,7 @@ function sidebar(props) {
             loggedIn() === false ? null :
             <li className="nav-item">
             <Link className="nav-link pb-5" to="#">
-                <h3 className='text-center'>Hi, {props.UserName}
+                <h3 className='text-center'>Hi, {UserName}
                 </h3>
                 </Link>
           </li>
@@ -77,7 +87,7 @@ function sidebar(props) {
 //Proptypes
 sidebar.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired
+    // UserName: PropTypes.string.isRequired
  
 }
 
