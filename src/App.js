@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Header from './components/layout/Header';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Login from './components/pages/login/login';
 import Dashboard from './components/pages/dashboard/dashboard';
-import Footer from './components/layout/Footer';
+// import Footer from './components/layout/Footer';
 import Createemployeepage from './components/pages/createEmployee/createEmployeePage';
 import Postarticles from './components/pages/addArticle/addArticle';
 import Postgifs from './components/pages/addGif/addGif';
@@ -11,11 +10,11 @@ import PostAgif from './components/pages/addGif/gifadd'
 import ViewArticle from './components/pages/article/viewArticle'
 import ViewGif from './components/pages/gif/viewGif'
 import Myposts from './components/pages/dashboard/myposts'
- import { authUser, loggedIn} from './components/auth'
+// import { loggedIn} from './components/auth'
 import './App.css';
 
 export class App extends Component {
-
+/*
     state = {
         loggedIn:false,
     }
@@ -32,6 +31,7 @@ export class App extends Component {
         }
 
     }
+    */
 
 
     logOut = () => {
@@ -51,9 +51,9 @@ export class App extends Component {
             <Router>
            
             
-            <Header logout={this.logOut} />
+            
             <Switch>
-            {this.checkLoginStatus()}    
+              
             <Route exact path="/" component={ Login } />
             <Route path="/login" component={ Login } />
 
@@ -94,7 +94,7 @@ export class App extends Component {
 
             </Switch>
 
-            <Footer />
+           
             
             </Router>
                 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from '../../layout/sidebar'
-import Footer from '../../layout/Footer'
+// import Footer from '../../layout/Footer'
 import { Redirect } from 'react-router-dom';
 import LiveFeed from './liveFeed'
 import '../../../App.css';
@@ -22,9 +22,7 @@ export class dashboard extends Component {
             }
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             
-                <LiveFeed />
-                <Footer />
-               
+            <LiveFeed />
                 
                
             </React.Fragment>

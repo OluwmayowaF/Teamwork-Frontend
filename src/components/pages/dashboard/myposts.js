@@ -95,7 +95,7 @@ export class myposts extends Component {
 
 myposts.propTypes = {
   logOut: PropTypes.func.isRequired,
-  UserName: PropTypes.string.isRequired,
+  // UserName: PropTypes.string.isRequired,
 
 }
 export default myposts

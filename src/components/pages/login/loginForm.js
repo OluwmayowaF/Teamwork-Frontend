@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { saveUser }   from '../../auth';
 import { loginUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
@@ -14,7 +14,7 @@ export class login extends Component {
            password: '',
           }
         ],
-        loginbtn: 'LOGIN',
+        loginbtn: 'Log In',
         userError: false,
         emailError: false,
         passwordError: false,
@@ -31,16 +31,16 @@ export class login extends Component {
     validEmail= (e) => {
         const emailTest  = /\S+@\S+\.\S+/.test(e.target.value);
         if (e.target.value.length < 1 ){
-            e.target.style.border = '2px solid red';
+            e.target.style.borderBottom = '2px solid red';
             this.setState({emailError: true});
             return false;
         } 
         if (emailTest === false){
-            e.target.style.border = '2px solid red';
+            e.target.style.borderBottom = '2px solid red';
             this.setState({emailError: true});
             return false;
         } else {
-            e.target.style.border = '2px solid #90EE90';
+            e.target.style.borderBottom = '2px solid #90EE90';
             this.setState({emailError: false});
             return true;
         }
@@ -48,11 +48,11 @@ export class login extends Component {
     }
     validPassword= (e) => {
         if (e.target.value.length < 1 ){
-            e.target.style.border = '2px solid red';
+            e.target.style.borderBottom = '2px solid red';
             this.setState({passwordError: true});
             return false;
         } else {
-            e.target.style.border = '2px solid #90EE90';
+            e.target.style.borderBottom = '2px solid #90EE90';
             this.setState({passwordError: false});
             return true;
         }
@@ -79,7 +79,7 @@ export class login extends Component {
         })
        .then(resp => resp.json())
         .then(data => {
-            this.setState({loginbtn: 'LOGIN'})
+            this.setState({loginbtn: 'Log In'})
     
             if(data.status === 'success' ){
                 saveUser(data)
@@ -117,16 +117,17 @@ export class login extends Component {
 }     
     render() {   
         return (
-            <div> 
-                <h3 className="text-left col-md-12" >Login</h3>
-                <p className="text-left col-md-12" >Contact the IT department for your login credentials</p>
+            <div className='Login-form-container text-center'> 
+                <img className='' src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575321531/TeamWorkFE/Group_3_lxwnkh.svg' alt='teamworkLogo'></img>
+                <h3 className="col-md-12" >Log in to you account</h3>
+                <p className="col-md-12" >*login with credentials provided by the IT department</p>
                 
                 <form onSubmit ={this.onSubmit}>
                 <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email"></label>
                 <input type= "text"
                 name = "email" 
-                placeholder="Enter your email address..."
+                placeholder="Email Address"
                 value={this.state.user.email}
                 onChange={this.onChange}
                 onBlur={this.validEmail}
@@ -140,10 +141,10 @@ export class login extends Component {
                 </div>
                
                 <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password"></label>
                 <input type= "password"
                 name = "password" 
-                placeholder="Enter your password"
+                placeholder="Password"
                 value={this.state.user.password}
                 onChange={this.onChange} 
                 onBlur={this.validPassword}
@@ -156,6 +157,14 @@ export class login extends Component {
                 }</div>
                 <br />
                 </div>
+                <div className="form-group">
+                <label htmlFor="RememberMe"> <input type="checkbox" value='Remember Me'/>
+                {'  '} Remember Me</label>
+               <Link className='LoginLink' for='#' >
+               Forgot Password
+               </Link>
+                </div>
+                
                
                 <div className="form-group">
                 <input type="submit"
@@ -168,6 +177,8 @@ export class login extends Component {
                     <p className="error-message">The email or password provided is incorrect please try again</p>
                     : null 
                 }
+                
+                
                 
                 </form>
             

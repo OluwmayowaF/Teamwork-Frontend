@@ -97,7 +97,7 @@ export class addArticle extends Component{
 //Proptypes
 addArticle.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired
+    // UserName: PropTypes.string.isRequired
  
 }
 

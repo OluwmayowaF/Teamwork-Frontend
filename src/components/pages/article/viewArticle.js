@@ -224,6 +224,7 @@ export class viewArticle extends Component {
                 id = {comment.commentid} 
                 comment={comment.comment}
                 authorid={comment.authorid}
+                date={comment.createdOn}
                 />
                 ))
                     :<p>{this.state.article.comments}</p>
@@ -252,7 +253,7 @@ export class viewArticle extends Component {
 //Proptypes
 viewArticle.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired,
+    // UserName: PropTypes.string.isRequired,
  
 }
 export default viewArticle

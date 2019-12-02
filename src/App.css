@@ -8,43 +8,108 @@
         font-family: 'Montserrat', sans-serif;
     }
     
+    .loginHeader {
+        height: 70px !important;
+    }
+    
+    .loginLogo {
+        padding-top: -3em;
+        padding-bottom: 2em;
+    }
+    
+    .loginHeader img {
+        min-width: 20%;
+        margin-left: 20px;
+        margin-top: -20px;
+    }
+    
     .logo {
         display: flex;
         width: 50%;
         float: left !important;
     }
     
+    .loginMain {
+        background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1575308309/TeamWorkFE/Group_2_kpwim7.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
     .Main-login {
-        /*  background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1574372803/TeamWorkFE/35237_br5xyn.jpg), rgba(0, 0, 0, 0.5);
-    background-size: cover;
-    background-repeat: no-repeat; */
         margin: 70px;
         font-family: 'Montserrat', sans-serif;
         color: #fff;
     }
     
     .Login-form-container {
+        background: rgb(157, 156, 156, 0.1);
+        mix-blend-mode: normal;
+        opacity: 0.5;
+        border-radius: 8px;
         color: #fff;
-        height: 65vh;
-        background: #528CFD;
-        padding: 0 2% !important;
-        box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
+        padding: 12% !important;
+        margin: 10% 0 !important;
+    }
+    
+    .Login-form-container input[type=text],
+    [type=password] {
+        background: none !important;
+        border-radius: 0px !important;
+        border-bottom: 1px solid #F1F3F5 !important;
+        border: none;
+        padding: 0px;
+        color: #FFFFFF !important;
+        ;
+    }
+    
+    .Login-form-container label {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 100;
+        font-size: 8px;
+        line-height: 25px;
+        color: white;
     }
     
     .Login-form-container p {
-        padding-bottom: 35px;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 14px;
+        line-height: 25px;
     }
     
     .Login-form-container h3 {
-        font-size: 30px;
-        line-height: 44px;
-        padding: 10px 0 2px 0;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 24px;
+        line-height: 25px;
+    }
+    
+    .Login-form-container form ::placeholder {
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height, or 150% */
+        color: #FFFFFF;
     }
     
     .Login-form-container label {
         float: left !important;
-        font-size: 20px;
-        font-weight: 100;
+        font-family: 'Nunito';
+        color: #FFF;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    
+    .Login-form-container img {
+        width: 30%;
+        padding: 5%;
     }
     
     .Welcome-message-container {
@@ -55,19 +120,37 @@
         padding: 10% 2% 0 2% !important;
     }
     
+    .LoginLink {
+        font-family: 'Nunito';
+        color: #FFF;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height, or 150% */
+        float: right;
+    }
+    
     .Login-btn {
-        color: #528CFD;
+        font-family: 'Nunito', sans-serif;
+        color: #FFF;
         margin: auto;
-        width: 120px;
+        width: 100%;
         height: 37px;
-        background: #FFFFFF;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
+        background: rgb(91, 154, 248, 0.6) !important;
+        border-radius: 8px;
+        border: none !important;
+        margin-top: 12px;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
     }
     
     .error-message {
         font-size: 18px;
-        color: red;
+        color: #c4c4c4;
+        text-shadow: #FFF;
         padding: 0px !important;
     }
     /* The sidebar menu */
@@ -117,8 +200,13 @@
     }
     
     .commentContainer {
-        background: #c4c4c4;
+        background: #ffffff;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        min-height: 50px;
+        width: 464px;
+        align-items: center;
+        margin-bottom: 5px;
+        padding: 1%;
     }
     
     @media only screen and (max-width: 600px) {

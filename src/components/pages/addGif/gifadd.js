@@ -108,7 +108,7 @@ export class gifAdd extends Component {
 //Proptypes
 gifAdd.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired
+    // UserName: PropTypes.string.isRequired
  
 }
 

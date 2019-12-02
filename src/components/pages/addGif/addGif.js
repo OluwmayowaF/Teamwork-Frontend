@@ -26,7 +26,7 @@ function addGif(props) {
 //Proptypes
 addGif.propTypes = {
     logOut: PropTypes.func.isRequired,
-    UserName: PropTypes.string.isRequired
+    // UserName: PropTypes.string.isRequired
 }
 
 export default withRouter(addGif)
