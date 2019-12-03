@@ -55,11 +55,13 @@ export class liveFeed extends Component {
   }
     render() {
         return (
-          <div >
+          <div className='allFeed' >
+            
             {
             this.state.loaded ?
             this.state.feeds.map((feed , key) =>(
-            <div key = {
+            <div  
+            key = {
               feed.url ? 'gif'+feed.id : 'article'+feed.id
             }>
             <Feeds 
@@ -70,17 +72,24 @@ export class liveFeed extends Component {
             date={feed.createdon}
             authorId={feed.authorid}/>
             </div>
-            )):<div className='sweet-loading' style={{margin:'20% 50%'}}>
+            )):
+            <div className='text-center loadingscreen' >
+            <div className='sweet-loading' >
             <ClipLoader
              //css={override}
               sizeUnit={"px"}
-               size={200}
+               size={100}
               color={'#0659FB'}
                loading={this.state.loading}
                />
+               <p style={{color:'#D0D0D0'}}>Please Hold on a minute while we fetch you some data</p>
+               </div>
       </div> 
+     
+      
             }
-          </div>
+            </div>
+          
         )
     }
    

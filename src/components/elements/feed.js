@@ -16,32 +16,29 @@ function feed(props) {
    
     return (
         
-        <div className="container pt-5" style={{width:'80%', float:'right'}}>
-        <div className='row'>
-        <div className='col-1'></div>
-       <div className="articleContainer col-8">
+       
+       <div className="articleContainer" >
 
        
-            <h4 className="text-primary"> Title: {props.title}</h4>
-           
-            <div className="">
+            <h4 className="text-primary float-left"> Title: {props.title}</h4><p className="text-dark float-right"><Moment date={props.date}/>   </p>
+           <br />
+            <div className="" style={{clear:'both'}}>
             {
                 props.url  ?  
-                <img className="center-block" src={props.url} alt='gifImage'></img>
-                : <p className="text-wrap text-truncate" >{props.article}  </p>                
+                <img className="" src={props.url} alt='gifImage'></img>
+                : <p className="text-wrap text-truncate clearfix" >{props.article}  </p>                
             }
+            </div>
             {
                 props.url  ?  
                 <Link style={{float:'right'}} to={`/dashboard/gif/${props.id}`}>View More</Link> 
                 :  <Link  style={{float:'right'}} to={`/dashboard/article/${props.id}`}>View More</Link>  
 
                }
-            </div>
-            <p className="text-dark"><Moment date={props.date}/>   </p>
+            
+            
            
-               </div>
-               <div className='col-3'></div>
-               </div>
+               
         </div>
         
         

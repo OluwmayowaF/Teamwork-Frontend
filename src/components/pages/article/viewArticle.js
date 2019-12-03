@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Article from '../../../components/elements/article'
 import Comment from '../../../components/elements/comment'
-import Sidebar from '../../layout/sidebar'
+import Sidebar from '../../layout/Sidebar'
 import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'

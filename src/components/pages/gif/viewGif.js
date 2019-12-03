@@ -6,7 +6,7 @@ import { viewGifUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
-import Sidebar from '../../layout/sidebar';
+import Sidebar from '../../layout/Sidebar';
 import PropTypes from 'prop-types';
 
 export class viewGif extends Component {

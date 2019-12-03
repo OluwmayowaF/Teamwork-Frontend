@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+//import ReactTooltip from 'react-tooltip'
 // import { authUser, loggedIn} from '../auth'
 
 
@@ -11,16 +12,8 @@ function Sidebar(props) {
     let UserName = `${authUser.data.firstname} ${authUser.data.lastname}`;
      return  UserName
     }*/
-
-
-    
-             
-     
-  
-
-   
     return (
-        <aside className="col-md-1 d-none d-md-block bg-dark sidebar" style={{width:'20%', height:'100vh', float:'left'}}  >
+        <aside className="col-md-1  d-md-block bg-dark sidenav position-fixed"  >
         <div className="sidebar-stick"  >
             
         <ul className="nav flex-column">
@@ -37,6 +30,7 @@ function Sidebar(props) {
             }
 
             <li className="nav-item" style={{paddingBottom:'80px'}}>
+            
             <Link className="nav-link text-center" to="/dashboard/myposts">
                 <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/032-networking-1_1_lmbiq3.svg' alt='logo' />
                 </Link>

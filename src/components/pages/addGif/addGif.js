@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types';
-import Sidebar from '../../layout/sidebar'
+import Sidebar from '../../layout/Sidebar'
 import { loggedIn }   from '../../auth';
 import AddGifForm from './addGifForm';
 

@@ -4,13 +4,18 @@ import {Link} from 'react-router-dom'
 
 
 
-function Header() {
+function Header(props) {
     return (
         
-       <nav className="navbar navbar-dark bg-dark">
-        <Link className='nav'  to="/dashboard">
-            <img className=" navbar-brand" src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1574283398/TeamWorkFE/teamwork_fvc2kr.svg" alt="logo" />
-        </Link>
+       <nav className="navbar headerMain ">
+       <div className='nav-item'>
+           {props.pageTitle}Home
+       </div>
+       
+       <div className='nav-item'>
+       <img src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1575360443/TeamWorkFE/fab_1_wcy4pg.svg" alt="myPosts" style={{paddingRight:'10px' }}/>
+        <img src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1575360115/TeamWorkFE/fab_lbkxwv.svg" alt="addPost"/>
+       </div>
         </nav>
     )
 }

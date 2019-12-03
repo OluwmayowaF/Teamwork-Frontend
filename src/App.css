@@ -153,14 +153,39 @@
         text-shadow: #FFF;
         padding: 0px !important;
     }
+    
+    .loadingscreen {
+        padding-top: 20%;
+    }
+    
+    .allFeed {
+        padding-top: 9%;
+        margin: auto !important;
+    }
     /* The sidebar menu */
     
     .sidenav {
-        min-height: 100vh !important;
-        top: 0 !important;
         font-size: 18px;
-        /* Full-height: remove this if you want "auto" height */
-        /* Fixed Sidebar (stay in place on scroll) */
+        width: 20% !important;
+        height: 100vh !important;
+        float: left !important;
+        position: FIXED;
+    }
+    
+    .linkPadding {
+        padding-bottom: 30px;
+    }
+    
+    .headerMain {
+        height: 67px;
+        background-color: #FFFFFF !important;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+        position: fixed;
+        width: inherit;
+    }
+    
+    .headerBtn {
+        float: right;
     }
     
     .userDetails {
@@ -188,10 +213,41 @@
     .articleContainer {
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        min-height: 150px;
-        width: 464px;
+        min-height: 232px;
+        width: 65%;
+        margin: auto;
         align-items: center;
         margin-bottom: 15px;
+        padding: 1.5em;
+    }
+    
+    .articleContainer p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        /* number of lines to show */
+        line-height: 24px;
+        /* fallback */
+        max-height: 144px;
+        /* fallback */
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+    }
+    
+    .articleContainer h4 {
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        color: #5E5E5E !important;
     }
     
     .articleContainer img {

@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 import { myfeedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
 import { ClipLoader } from 'react-spinners';
-import Sidebar from '../../layout/sidebar'
+import Sidebar from '../../layout/Sidebar'
 import PropTypes from 'prop-types';
 
 export class myposts extends Component {

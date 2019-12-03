@@ -4,7 +4,7 @@ import '../../App.css';
 
 
 
-function Header() {
+function LoginHeader() {
     return (
         
        <nav className="loginHeader navbar navbar-dark bg-dark">
@@ -15,4 +15,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default LoginHeader;
