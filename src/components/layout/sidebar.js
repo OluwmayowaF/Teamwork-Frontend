@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 
-function sidebar(props) {
+function Sidebar(props) {
    /* const GetUserName = () =>{
     let UserName = `${authUser.data.firstname} ${authUser.data.lastname}`;
      return  UserName
@@ -20,8 +20,9 @@ function sidebar(props) {
 
    
     return (
-        <aside className="col-md-2 d-none d-md-block bg-light sidebar" style={{width:'20%', height:'100vh', float:'left', paddingTop:'100px'}}  >
+        <aside className="col-md-1 d-none d-md-block bg-dark sidebar" style={{width:'20%', height:'100vh', float:'left'}}  >
         <div className="sidebar-stick"  >
+            
         <ul className="nav flex-column">
         {/*
             loggedIn() === false ? null :
@@ -35,41 +36,45 @@ function sidebar(props) {
           </li>*/
             }
 
-            
+            <li className="nav-item" style={{paddingBottom:'80px'}}>
+            <Link className="nav-link text-center" to="/dashboard/myposts">
+                <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/032-networking-1_1_lmbiq3.svg' alt='logo' />
+                </Link>
+            </li>
           
           
-          <li className="nav-item pb-3">
-          <Link className="nav-link text-center" to="/dashboard">
-                 Home
-                </Link>
-          </li>
-          <li className="nav-item pb-3">
-          <Link className="nav-link text-center" to="/dashboard/myposts">
-                 My Posts
-                </Link>
-          </li>
-
-          <li className="nav-item pb-3">
-          <Link className="nav-link text-center" to="/dashboard/createEmployee">
-          Create Employee
+          <li className="nav-item text-center linkPadding">
+          <Link className="nav-link" to="/dashboard">
+                 <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/home_vector_1_af1lwo.svg' alt='Home' >
+                 </img>
                 </Link>
           </li>
          
-          <li className="nav-item pb-3 text-center">
-          <Link className="nav-link text-center" to="/dashboard/postarticle">
-               Add Article
-               </Link>
-          </li>
-          <li className="nav-item pb-3 text-center">
-          <Link className="nav-link" to="/dashboard/postgif">
-                Add Gif
+          <li className="nav-item linkPadding text-center">
+          <Link className="nav-link" to="/dashboard/createEmployee">
+          <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/case_vector_1_qhbhsf.svg' alt='Home' >
+                 </img>
                 </Link>
           </li>
-          <li className="nav-item pb-3 text-center">
+         
+          <li className="nav-item linkPadding text-center">
+          <Link className="nav-link" to="/dashboard/postarticle">
+          <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/note-text_vector_1_iwxiu2.svg' alt='Home' >
+                 </img>
+               </Link>
+          </li>
+          <li className="nav-item linkPadding text-center">
+          <Link className="nav-link" to="/dashboard/postgif">
+          <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/smiled_vector_1_etsr3w.svg' alt='Home' >
+                 </img>
+                </Link>
+          </li>
+          <li className="nav-item linkPadding text-center">
           <Link className="av-link" onClick={props.logOut} to="#">
                 
                
-                Logout
+          <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/logout_1_c2wc4h.svg' alt='Home' >
+                 </img>
                 </Link>
             </li>
         </ul>
@@ -82,11 +87,11 @@ function sidebar(props) {
    
 }
 //Proptypes
-sidebar.propTypes = {
+Sidebar.propTypes = {
     logOut: PropTypes.func.isRequired,
     // UserName: PropTypes.string.isRequired
  
 }
 
 
-export default withRouter(sidebar);
+export default withRouter(Sidebar);
