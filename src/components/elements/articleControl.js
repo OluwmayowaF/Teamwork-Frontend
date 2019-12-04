@@ -19,8 +19,16 @@ export default function articleControl(props) {
     }
     return (
         <React.Fragment>
-          <button className='btn-block' onClick={props.editArticle}>Edit</button>  
+        <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   
+  </button>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <button  onClick={props.editArticle}>Edit</button>  
           <button onClick={confirmDelete}>Delete</button>
+  </div>
+</div>
+          
         </React.Fragment>
     )
 }

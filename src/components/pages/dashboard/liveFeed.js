@@ -5,7 +5,7 @@ import { getToken }   from '../../auth';
 import { Redirect } from 'react-router-dom'
 import { feedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
-import { ClipLoader } from 'react-spinners';
+import LoadingScreen from '../../elements/loadingScreen'
 
 
 export class liveFeed extends Component {
@@ -72,21 +72,7 @@ export class liveFeed extends Component {
             date={feed.createdon}
             authorId={feed.authorid}/>
             </div>
-            )):
-            <div className='text-center loadingscreen' >
-            <div className='sweet-loading' >
-            <ClipLoader
-             //css={override}
-              sizeUnit={"px"}
-               size={100}
-              color={'#0659FB'}
-               loading={this.state.loading}
-               />
-               <p style={{color:'#D0D0D0'}}>Please Hold on a minute while we fetch you some data</p>
-               </div>
-      </div> 
-     
-      
+            )): <LoadingScreen />      
             }
             </div>
           

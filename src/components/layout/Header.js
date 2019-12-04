@@ -13,6 +13,7 @@ function Header(props) {
        </div>
        
        <div className='nav-item'>
+           
        <img src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1575360443/TeamWorkFE/fab_1_wcy4pg.svg" alt="myPosts" style={{paddingRight:'10px' }}/>
         <img src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1575360115/TeamWorkFE/fab_lbkxwv.svg" alt="addPost"/>
        </div>

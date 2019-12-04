@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import Article from '../../../components/elements/article'
 import Comment from '../../../components/elements/comment'
-import Sidebar from '../../layout/Sidebar'
+import Sidebar from '../../layout/Sidebar';
+import Header from '../../layout/Header';
 import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
-import {ClipLoader} from 'react-spinners';
+import LoadingScreen from '../../elements/loadingScreen'
 import PropTypes from 'prop-types';
+// import CommentForm from '../../elements/commentForm';
+
 
 
 export class viewArticle extends Component {
@@ -21,6 +24,7 @@ export class viewArticle extends Component {
         commentAdded:false,
         editarticle:'',
         owner:false,
+        
     }
 
     token = getToken();
@@ -28,8 +32,6 @@ export class viewArticle extends Component {
     componentDidMount =() => {
         this.getArticle();
         this.checkOwner();
-        
-
     }
 
     checkOwner = (ownerId) =>{
@@ -186,10 +188,12 @@ export class viewArticle extends Component {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <div className="container "  style={{float:'right', width:'80%'}}>
+            <div style={{width:'91.5%', float:'right'}}>
+                <Header />
                 {
                    
                     this.state.loaded ?
+                    <div style={{width:'60%'}}className='allFeed'>
                     <Article  
                     id={this.state.article.id}
                     title={this.state.article.title}
@@ -199,24 +203,39 @@ export class viewArticle extends Component {
                     onChange={this.updatedArticle}
                     author = {this.state.article.ownername}
                     isOwner={this.state.owner}
+                    editArticle={this.editArticle}
+                    deleteArticle={this.deleteArticle}
+
                     />
-                   :
-                   <div className='sweet-loading' style={{margin:'20% 50%'}}>
-              <ClipLoader
-             //css={override}
-              sizeUnit={"px"}
-               size={200}
-              color={'#0659FB'}
-               loading={this.state.loading}
-               />
-      </div> 
-                }{
+                    {
+                    this.state.owner ?
+                    <ArticleControl 
+                    editArticle={this.editArticle}
+                    deleteArticle={this.deleteArticle}
+                    />:null
+                } {
                     this.state.owner ?
                     <ArticleControl 
                     editArticle={this.editArticle}
                     deleteArticle={this.deleteArticle}
                     />:null
                 }
+                   
+                    </div>
+                   : <LoadingScreen />                
+                   }
+                   
+                   <div style={{width:'60%'}} >
+                   {
+                    this.state.owner ?
+                    <ArticleControl 
+                    editArticle={this.editArticle}
+                    deleteArticle={this.deleteArticle}
+                    />:null
+                }
+                </div>
+                <div style={{width:'60%', margin:'auto'}}>
+                    
                 {  this.state.loaded ?
                     typeof this.state.article.comments === 'object' ? 
                     this.state.article.comments.map((comment ) =>(
@@ -224,31 +243,25 @@ export class viewArticle extends Component {
                 id = {comment.commentid} 
                 comment={comment.comment}
                 authorid={comment.authorid}
+                authorName= {`${comment.firstname} ${comment.lastname}`}
                 date={comment.createdOn}
                 />
-                ))
-                    :<p>{this.state.article.comments}</p>
+               
+                )) 
+                
+                    :<React.Fragment>
+                    <p>{this.state.article.comments}</p></React.Fragment>
                     :
                     null
                 }
+                </div>
                
-                <form onSubmit={this.addComment}>
-                    <input style={this.commentBox} name='addcomment'type='text'
-                    value={this.state.addcomment}
-                    onChange={this.onChange}>
-                    </input>
-
-                    <button>Comment</button>
-
-                </form>
+                
                 </div>
             </div>
         )}  
 
-         commentBox = {
-            
-
-        }
+        
 }
 //Proptypes
 viewArticle.propTypes = {
