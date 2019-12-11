@@ -20,12 +20,13 @@ export default function articleControl(props) {
     return (
         <React.Fragment>
         <div className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button className="btn  dropdown-toggle" style={{backgroundColor:'#4D6488', color:'#fff'}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    
   </button>
   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  <button  onClick={props.editArticle}>Edit</button>  
-          <button onClick={confirmDelete}>Delete</button>
+  <button className="btn btn-outline-dark" onClick={props.editArticle}>Edit</button>  
+  <br />
+  <button className="btn btn-outline-danger"  onClick={confirmDelete}>Delete</button>
   </div>
 </div>
           

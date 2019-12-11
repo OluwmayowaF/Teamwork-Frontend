@@ -20,7 +20,7 @@ function feed(props) {
        <div className="articleContainer" >
 
        
-            <h4 className="text-primary float-left"> Title: {props.title}</h4><p className="text-dark float-right"><Moment date={props.date}/>   </p>
+            <h4 className="text-primary float-left"> Title: {props.title}</h4><p className="text-dark float-right">Posted <Moment fromNow date={props.date}  />   </p>
            <br />
             <div className="" style={{clear:'both'}}>
             {

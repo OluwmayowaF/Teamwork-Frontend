@@ -1,5 +1,7 @@
 import React from 'react';
-import ArticleControl from '../../components/elements/articleControl'
+import ArticleControl from '../../components/elements/articleControl';
+import CommentForm from '../elements/commentForm';
+import Moment from 'react-moment';
 
 export default function article(props) {
   const control =()=>{
@@ -23,7 +25,11 @@ export default function article(props) {
               
               </div>
               <p style={{float:'right'}}>{control()}</p>
-              <p style={{float:'right'}}>{props.date}</p>
+             
+              <p className='text-right float-right'>
+                Posted by {props.author}<br />
+                <Moment fromNow date={props.date}  />
+                </p>
               
               <hr style={{clear:'both'}} />
               
@@ -37,7 +43,9 @@ export default function article(props) {
               onChange={props.onChange}
               hidden>
               </textarea>
-             
+             <CommentForm 
+             addComment={props.addComment}
+             onChange={props.onChange}/>
              
             </div>
           </div>

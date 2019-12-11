@@ -3,7 +3,7 @@ import Article from '../../../components/elements/article'
 import Comment from '../../../components/elements/comment'
 import Sidebar from '../../layout/Sidebar';
 import Header from '../../layout/Header';
-import ArticleControl from '../../elements/articleControl'
+// import ArticleControl from '../../elements/articleControl'
 import { viewArticleUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
@@ -19,7 +19,7 @@ export class viewArticle extends Component {
     state ={
         article:null,
         loaded:false,
-        addcomment:' ',
+        addcomments:' ',
         newcomment:null,
         commentAdded:false,
         editarticle:'',
@@ -72,10 +72,10 @@ export class viewArticle extends Component {
               )
         }
     }
-    updatedArticle = (e) => {
+   /* updatedArticle = (e) => {
         this.setState({[e.target.name]: e.target.value})    
 
-    }
+    }*/
 
     editArticle =(e) => {
         e.preventDefault();
@@ -125,7 +125,7 @@ export class viewArticle extends Component {
                     "Authorization": token
                 },
                 body: JSON.stringify({ 
-                  comment: this.state.addcomment,
+                  comment: this.state.addcomments,
               }),
             })
             .then(resp => resp.json())
@@ -134,6 +134,7 @@ export class viewArticle extends Component {
                     this.getArticle()
                     this.setState({newcomment: data})
                     this.setState({commentAdded: true})
+                    this.setState({addcomments:' '})
                     console.log(data.data)
                   
                 }
@@ -200,40 +201,21 @@ export class viewArticle extends Component {
                     article={this.state.article.article}
                     comment={this.state.article.comments}
                     date={this.state.article.createdOn}
-                    onChange={this.updatedArticle}
+                    onChange={this.onChange}
                     author = {this.state.article.ownername}
                     isOwner={this.state.owner}
                     editArticle={this.editArticle}
                     deleteArticle={this.deleteArticle}
+                    addComments= {this.state.addcomments}
+                    addComment={this.addComment}
+                   // onChange={this.onChange}
 
                     />
-                    {
-                    this.state.owner ?
-                    <ArticleControl 
-                    editArticle={this.editArticle}
-                    deleteArticle={this.deleteArticle}
-                    />:null
-                } {
-                    this.state.owner ?
-                    <ArticleControl 
-                    editArticle={this.editArticle}
-                    deleteArticle={this.deleteArticle}
-                    />:null
-                }
                    
                     </div>
                    : <LoadingScreen />                
                    }
                    
-                   <div style={{width:'60%'}} >
-                   {
-                    this.state.owner ?
-                    <ArticleControl 
-                    editArticle={this.editArticle}
-                    deleteArticle={this.deleteArticle}
-                    />:null
-                }
-                </div>
                 <div style={{width:'60%', margin:'auto'}}>
                     
                 {  this.state.loaded ?
