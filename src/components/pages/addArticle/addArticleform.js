@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function addArticleform(props) {
     return (
-        <div  style={{width: '80%', float:'right', padding:'5%'}}>
-            <h4 className='text-center text-primary'>Add an Article</h4>
-            <form onSubmit ={props.onSubmit}>
+        <div  className='compContainer'>
+            
+            <form className='addPost' onSubmit ={props.onSubmit}>
                 <div className="form-group">
                 <label htmlFor="title">Title</label>
                 <input type= "text"

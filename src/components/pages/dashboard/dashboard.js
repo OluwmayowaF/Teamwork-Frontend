@@ -14,21 +14,14 @@ export class dashboard extends Component {
 
     render() {
         return (
-            
 
             <div>
-
+            <Header pageTitle='Home' /> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <div  style={{width:'91.5%', float:'right'}}>
-            <Header /> 
-           
-             
-            
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            
-            <div className='container-fluid' >
+            <div className='compContainer container-fluid' >
                 <div className='row'>
             <LiveFeed />
             </div>
@@ -36,7 +29,7 @@ export class dashboard extends Component {
            
              
             </div>
-            </div>
+           
            
         )
     }

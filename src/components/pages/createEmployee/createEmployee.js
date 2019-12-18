@@ -50,9 +50,9 @@ export class createEmployee extends Component {
     //
     render() {
         return (
-            <div style={{width: '80%', float:'right', padding:'5%'}}>
-            <form onSubmit ={this.onSubmit}>
-            <div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+            <div className='compContainer '>
+            <form className='createEmployee' onSubmit ={this.onSubmit}>
+            <div className="form-group  ">
                 <label htmlFor="firstname">Firstname</label>
                 <input type= "text"
                 name = "firstname" 
@@ -62,7 +62,7 @@ export class createEmployee extends Component {
                 value={this.state.firstname}
                 required/>
                
-                </div><div className="form-group col-xs-10 ccol-sm-6 col-md-6 col-lg-6">
+                </div><div className="form-group ">
                 <label htmlFor="lastname">Lastname</label>
                 <input type= "text"
                 name = "lastname" 
@@ -73,7 +73,7 @@ export class createEmployee extends Component {
                 required/>
                
                 </div>
-                <div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                <div className="form-group ">
                 <label htmlFor="email">Email</label>
                 <input type= "text"
                 name = "email" 
@@ -85,7 +85,7 @@ export class createEmployee extends Component {
                
                 </div>
                
-                <div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                <div className="form-group ">
                 <label htmlFor="password">Password</label>
                 <input type= "password"
                 name = "password" 
@@ -96,7 +96,7 @@ export class createEmployee extends Component {
                 required/>
                
               
-                </div><div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                </div><div className="form-group ">
                 <label htmlFor="department">Department</label>
                 <input type= "text"
                 name = "department" 
@@ -106,7 +106,7 @@ export class createEmployee extends Component {
                 value={this.state.department}
                 required/>
                
-                </div><div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                </div><div className="form-group ">
                 <label htmlFor="jobrole">JobRole</label>
                 <input type= "text"
                 name = "jobrole" 
@@ -116,7 +116,7 @@ export class createEmployee extends Component {
                 value={this.state.jobrole}
                 />
                
-                    </div><div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                    </div><div className="form-group ">
                 <label htmlFor="gender">Gender</label>
                 <select className="form-control"  name="gender"  value={this.state.gender}  onChange={this.onChange} >
                     <option>Choose your gender</option>
@@ -126,7 +126,7 @@ export class createEmployee extends Component {
                 </select>
                 </div>
                
-                <div className="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                <div className="form-group ">
                 <label htmlFor="address">Adddress</label>
                 <input type= "textarea"
                 name = "address" 
@@ -138,9 +138,9 @@ export class createEmployee extends Component {
                
                 </div>
                
-                <div className="form-group">
+                <div className="form-group ">
                 <input type="submit"
-              value="Submit"
+                value="Submit"
                 className="Login-btn"
                 />
                 </div>

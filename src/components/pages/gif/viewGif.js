@@ -7,6 +7,7 @@ import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
 import Sidebar from '../../layout/Sidebar';
+import Header from '../../layout/Header';
 import PropTypes from 'prop-types';
 
 export class viewGif extends Component {
@@ -138,11 +139,16 @@ export class viewGif extends Component {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
+            {
+                this.state.loaded ?
+                <Header 
+            pageTitle= {this.state.gif.id} HeaderIcon=''/> :null
+            }
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <div className="container"  style={{float:'right', width:'80%'}}>
+            <div className="container compContainer"  >
                 {
                     this.state.loaded ?
-                    <React.Fragment>
+                    <div style={{width:'60%'}}> 
                     <Gif 
                 id={this.state.gif.id}
                 date={this.state.gif.createdOn}
@@ -158,7 +164,7 @@ export class viewGif extends Component {
                     <button>Comment</button>
 
                 </form>
-                </React.Fragment>
+                </div>
                 :null
 
                 }

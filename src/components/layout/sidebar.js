@@ -13,7 +13,7 @@ function Sidebar(props) {
      return  UserName
     }*/
     return (
-        <aside className="col-md-1  d-md-block bg-dark sidenav position-fixed"  >
+        <aside className="d-md-block bg-dark sidenav "  >
         <div className="sidebar-stick"  >
             
         <ul className="nav flex-column">
@@ -31,12 +31,16 @@ function Sidebar(props) {
 
             <li className="nav-item" style={{paddingBottom:'80px'}}>
             
+               
             <Link className="nav-link text-center" to="/dashboard/myposts">
+               
                 <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/032-networking-1_1_lmbiq3.svg' alt='logo' />
+               
                 </Link>
+            
             </li>
           
-          
+            
           <li className="nav-item text-center linkPadding">
           <Link className="nav-link" to="/dashboard">
                  <img src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575328023/TeamWorkFE/home_vector_1_af1lwo.svg' alt='Home' >

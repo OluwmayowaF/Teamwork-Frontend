@@ -8,6 +8,12 @@
         font-family: 'Montserrat', sans-serif;
     }
     
+    .compContainer {
+        width: 92%;
+        float: right;
+        margin-top: 2em !important;
+    }
+    
     .loginHeader {
         height: 70px !important;
     }
@@ -60,7 +66,6 @@
         border: none;
         padding: 0px;
         color: #FFFFFF !important;
-        ;
     }
     
     .Login-form-container label {
@@ -159,17 +164,16 @@
     }
     
     .allFeed {
-        padding-top: 9%;
         margin: auto !important;
     }
     /* The sidebar menu */
     
     .sidenav {
         font-size: 18px;
-        width: 20% !important;
+        width: 8% !important;
         height: 100vh !important;
         float: left !important;
-        position: FIXED;
+        position: fixed;
     }
     
     .linkPadding {
@@ -177,11 +181,15 @@
     }
     
     .headerMain {
+        width: 92%;
+        float: right !important;
         height: 67px;
         background-color: #FFFFFF !important;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
-        position: fixed;
-        width: inherit;
+    }
+    
+    .headerLogo {
+        float: left;
     }
     
     .headerBtn {
@@ -303,11 +311,61 @@
         width: 60px;
         color: white;
     }
+    /****************** Create Employee ********************/
+    
+    .createEmployee {
+        width: 40%;
+        margin: auto;
+    }
+    
+    .createEmployee input[type=text],
+    [type=password],
+    [type=textarea],
+    select {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        background: rgb(229, 229, 229, 0.4) !important;
+        height: 40px;
+        border: none !important;
+        padding-left: 15px !important;
+    }
+    
+    .addPost {
+        width: 40%;
+        margin: auto;
+    }
+    
+    .addPost input[type=text],
+    [type=password],
+    [type="file"],
+    select,
+    textarea {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: #333333;
+        background: rgb(229, 229, 229, 0.4) !important;
+        height: 40px;
+        border: none !important;
+        padding-left: 15px !important;
+    }
     
     @media only screen and (max-width: 600px) {
         .Welcome-message-container {
             margin-top: 0;
             height: fit-content;
             padding: 10px !important;
+        }
+        .sidenav {
+            width: 20% !important;
+        }
+        .headerMain,
+        .commentContainer {
+            width: 80% !important;
         }
     }

@@ -188,13 +188,22 @@ export class viewArticle extends Component {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
+            {
+                this.state.loaded ?
+                <Header 
+            pageTitle= {this.state.article.ownername} HeaderIcon=''/> :null
+            }
+           
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <div style={{width:'91.5%', float:'right'}}>
-                <Header />
+           
+            <div className='compContainer'>
+              
                 {
                    
                     this.state.loaded ?
+                   
                     <div style={{width:'60%'}}className='allFeed'>
+                   
                     <Article  
                     id={this.state.article.id}
                     title={this.state.article.title}

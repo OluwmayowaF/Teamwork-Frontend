@@ -4,6 +4,7 @@ import { getToken } from '../../auth'
 import { withRouter, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import Sidebar from '../../layout/Sidebar';
+import Header from '../../layout/Header';
 import { loggedIn }   from '../../auth';
 import swal from '@sweetalert/with-react'
 
@@ -72,21 +73,26 @@ export class gifAdd extends Component {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
+            <Header pageTitle='Add A Gif' HeaderIcon=''/> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <form ref={el => (this.form = el)} onSubmit ={this.addGif}  style={{width: '80%', float:'right', padding:'5%'}}>
+            <div className='compContainer'>
+            <form ref={el => (this.form = el)} onSubmit ={this.addGif}  className='addPost'>
                 <div className="form-group">
                 <label htmlFor="title">Title</label>
                 <input type= "text"
                 name = "title" 
                 placeholder="Gif Title"
                 className="form-control"
-                />
+               required />
                 </div>
                
                 <div className="form-group">
                 <label htmlFor="gif">Upload Gif</label>
+                
                 <input type="file" name='image' 
-                className="form-control-file" />
+                className="form-control-file"  required/>
+               
+                
                 <br />
                 </div>
 
@@ -100,7 +106,7 @@ export class gifAdd extends Component {
                 </div>
                 
                 </form>
-                
+                </div>
             </div>
         )
     }

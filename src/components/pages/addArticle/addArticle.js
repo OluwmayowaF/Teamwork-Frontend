@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { withRouter, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import Sidebar from '../../layout/Sidebar';
+import Header from '../../layout/Header';
 import { loggedIn }   from '../../auth';
 import AddArticleForm from './addArticleform';
 import { addArticleUrl     } from '../../apis';
@@ -83,6 +84,7 @@ export class addArticle extends Component{
         {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
+            <Header pageTitle='Add An Article' HeaderIcon=''/> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
           
             <AddArticleForm  title={this.state.title} article={this.state.article} category={this.state.category} 
