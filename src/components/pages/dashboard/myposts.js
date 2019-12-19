@@ -63,7 +63,7 @@ export class myposts extends Component {
           <Header pageTitle='My Posts' buttonText ={<Link style={{ color: '#4D6488', textDecoration:'none' }}
            to='/dashboard'>all posts</Link>}/> 
           <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-          <div className='allfeed compContainer'>
+          <div className=' compContainer'>
             {
             this.state.isloaded 
             ?

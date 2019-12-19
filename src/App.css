@@ -21,6 +21,20 @@
         float: right;
         margin-top: 2em !important;
     }
+    /***************Login******************/
+    
+    .loginPage {
+        height: 100vh;
+    }
+    
+    .loginContainer {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
     
     .loginHeader {
         height: 70px !important;
@@ -48,6 +62,8 @@
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
     
     .Main-login {
@@ -125,12 +141,12 @@
         padding: 5%;
     }
     
-    .Welcome-message-container {
-        margin-top: 35px;
-        height: 55vh;
-        background: #528CFD;
-        box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
-        padding: 10% 2% 0 2% !important;
+    .loginFooter {
+        height: 50px !important;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
     }
     
     .LoginLink {
@@ -189,6 +205,7 @@
     }
     
     .headerMain {
+        display: flex;
         width: 92%;
         float: right !important;
         height: 67px;
@@ -470,14 +487,13 @@
         height: 60px;
     }
     
-    @media only screen and (max-width: 600px) {
-        .Welcome-message-container {
-            margin-top: 0;
-            height: fit-content;
-            padding: 10px !important;
-        }
+    @media only screen and (min-width: 600px) {
         .sidenav {
             width: 20% !important;
+            height: 100vh;
+        }
+        .headerMain {
+            margin: 0;
         }
         .headerMain,
         .commentContainer {

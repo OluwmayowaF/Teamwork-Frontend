@@ -23,12 +23,9 @@ export default function login(props) {
                     <div className='col-md-4'>
                         <LoginForm />
                     </div>
-                  
 
                 </div>
-
-                
-                
+  
             </div>                
             <Footer />  
         </div>

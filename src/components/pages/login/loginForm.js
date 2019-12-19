@@ -61,6 +61,7 @@ export class login extends Component {
     
 
     onSubmit = (e) => { 
+     const loading = <img src='../components/elements/loading.gif' alt='loading'></img>
     e.preventDefault();
     if(this.validEmail !== false && this.validPassword !== false){
         this.setState({loginbtn: 'Loading...'})
