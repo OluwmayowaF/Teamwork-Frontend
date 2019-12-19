@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Gif from '../../../components/elements/gif'
 import Comment from '../../../components/elements/comment'
-import GifControl from '../../elements/gifControl'
+import CommentForm from '../../elements/commentForm'
 import { viewGifUrl } from '../../../components/apis'
 import { getToken, authUser , loggedIn} from '../../auth'
 import { Redirect } from 'react-router-dom';
 import swal from '@sweetalert/with-react';
 import Sidebar from '../../layout/Sidebar';
 import Header from '../../layout/Header';
+import LoadingScreen from '../../elements/loadingScreen';
 import PropTypes from 'prop-types';
 
 export class viewGif extends Component {
@@ -15,7 +16,7 @@ export class viewGif extends Component {
     state ={
         gif:null,
         loaded:false,
-        addcomment:' ',
+        addcomments:' ',
         newcomment:null,
         commentAdded:false,
         owner:false,
@@ -76,7 +77,7 @@ export class viewGif extends Component {
                     "Authorization": token
                 },
                 body: JSON.stringify({ 
-                  comment: this.state.addcomment,
+                  comment: this.state.addcomments,
               }),
             })
             .then(resp => resp.json())
@@ -142,39 +143,27 @@ export class viewGif extends Component {
             {
                 this.state.loaded ?
                 <Header 
-            pageTitle= {this.state.gif.id} HeaderIcon=''/> :null
+                 pageTitle= {'Gif - '+this.state.gif.ownername} HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> :null
             }
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <div className="container compContainer"  >
+            <div className=" compContainer"  >
                 {
-                    this.state.loaded ?
-                    <div style={{width:'60%'}}> 
-                    <Gif 
+                this.state.loaded ?
+                <div style={{width:'60%'}} className='allFeed'> 
+                <Gif 
                 id={this.state.gif.id}
                 date={this.state.gif.createdOn}
                 title={this.state.gif.title}
                 url={this.state.gif.url}
+                isOwner ={this.state.owner}
                 />
-                <form onSubmit={this.addComment}>
-                    <input style={this.commentBox} name='addcomment'type='text'
-                    value={this.state.addcomment}
-                    onChange={this.onChange}>
-                    </input>
-
-                    <button>Comment</button>
-
-                </form>
+                <CommentForm addComment={this.addComment} addComments={this.state.addcomments}
+                    onChange={this.onChange} />
                 </div>
-                :null
+                :<LoadingScreen />     
 
                 }
-                {
-                    this.state.owner ?
-                    <GifControl 
-                    
-                    deleteGif={this.deleteGif}
-                    />:null
-                }
+                <div style={{width:'60%', margin:'auto'}}>
                 {  this.state.loaded ?
                     typeof this.state.gif.comments === 'object' ? 
                     this.state.gif.comments.map((comment ) =>(
@@ -182,13 +171,15 @@ export class viewGif extends Component {
                 id = {comment.commentid} 
                 comment={comment.comment}
                 authorid={comment.authorid}
+                authorName= {`${comment.firstname} ${comment.lastname}`}
+                date={comment.comment_date}
                 />
                 ))
                     :<p>{this.state.gif.comments}</p>
                     :
                     null
                 }
-              
+              </div>
                 </div>
                 
             </div>

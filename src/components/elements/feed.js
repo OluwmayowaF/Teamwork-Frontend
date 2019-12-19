@@ -25,14 +25,14 @@ function feed(props) {
             <div className="" style={{clear:'both'}}>
             {
                 props.url  ?  
-                <img className="" src={props.url} alt='gifImage'></img>
+                <div className="text-center"><img  src={props.url} alt='gifImage'></img></div>
                 : <p className="text-wrap text-truncate clearfix" >{props.article}  </p>                
             }
             </div>
             {
                 props.url  ?  
-                <Link style={{float:'right'}} to={`/dashboard/gif/${props.id}`}>View More</Link> 
-                :  <Link  style={{float:'right'}} to={`/dashboard/article/${props.id}`}>View More</Link>  
+                <Link style={{float:'left', textDecoration:'none'}} to={`/dashboard/gif/${props.id}`}>See More</Link> 
+                :  <Link  style={{float:'left', textDecoration:'none'}} to={`/dashboard/article/${props.id}`}>See More</Link>  
 
                }
             

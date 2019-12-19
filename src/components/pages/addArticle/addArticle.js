@@ -84,7 +84,7 @@ export class addArticle extends Component{
         {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Header pageTitle='Add An Article' HeaderIcon=''/> 
+            <Header pageTitle='Add An Article' HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
           
             <AddArticleForm  title={this.state.title} article={this.state.article} category={this.state.category} 

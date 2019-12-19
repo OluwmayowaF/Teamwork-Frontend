@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Feeds from '../../elements/feed'
 import { getToken }   from '../../auth';
 //import { signedInUser }   from '../../auth';
-import { Redirect } from 'react-router-dom'
+import { Redirect,Link } from 'react-router-dom'
 import { myfeedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
-import { ClipLoader } from 'react-spinners';
+// import { ClipLoader } from 'react-spinners';
 import Sidebar from '../../layout/Sidebar'
 import PropTypes from 'prop-types';
+import LoadingScreen from '../../elements/loadingScreen';
+import Header from '../../layout/Header'
 
 export class myposts extends Component {
     state={
@@ -58,8 +60,10 @@ export class myposts extends Component {
     render() {
         return (
           <React.Fragment >
+          <Header pageTitle='My Posts' buttonText ={<Link style={{ color: '#4D6488', textDecoration:'none' }}
+           to='/dashboard'>all posts</Link>}/> 
           <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-          <div>
+          <div className='allfeed compContainer'>
             {
             this.state.isloaded 
             ?
@@ -75,15 +79,7 @@ export class myposts extends Component {
             date={feed.createdon}
             authorId={feed.authorid}/>
             </div>
-            )):<div className='sweet-loading' style={{margin:'20% 50%'}}>
-            <ClipLoader
-             //css={override}
-              sizeUnit={"px"}
-               size={200}
-              color={'#0659FB'}
-               loading={this.state.loading}
-               />
-      </div> 
+            )):<LoadingScreen />
             }
             </div>
           </React.Fragment>

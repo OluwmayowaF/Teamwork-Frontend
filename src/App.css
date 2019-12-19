@@ -4,11 +4,19 @@
         padding: 0;
     }
     
+    .compContainer button {
+        outline: none;
+    }
+    
     body {
         font-family: 'Montserrat', sans-serif;
     }
     
     .compContainer {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
         width: 92%;
         float: right;
         margin-top: 2em !important;
@@ -188,12 +196,112 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
     }
     
+    .headerMain button:hover {
+        transform: none;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+    
+    .headerMain button:focus {
+        outline: none;
+    }
+    
     .headerLogo {
         float: left;
     }
     
-    .headerBtn {
+    .errorPage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10%;
+    }
+    
+    .errorPage p {
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 25px;
+        text-align: center;
+        color: #4F4F4F;
+        margin-top: 39px;
+        margin-bottom: 27px;
+    }
+    
+    .errorPage button {
+        width: 125px !important;
+        height: 45px !important;
+        text-align: center;
+        outline: none;
+    }
+    
+    .errorBtn {
+        cursor: pointer;
+        background: #4D6488;
+        color: #ffffff;
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 16px;
+        border-radius: 33px;
+        min-width: 99px;
+        min-height: 45px;
+        text-transform: capitalize;
+    }
+    
+    .backBtn {
+        cursor: pointer;
         float: right;
+        background: #4D6488;
+        color: #ffffff;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 16px;
+        border-radius: 33px;
+        min-width: 99px;
+        min-height: 45px;
+        text-transform: capitalize;
+        margin-right: 10px;
+    }
+    
+    .headerBtn {
+        cursor: pointer;
+        float: right;
+        background: none;
+        color: #4D6488;
+        border: #4D6488 1px solid;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 16px;
+        border-radius: 33px;
+        width: 99px;
+        height: 45px;
+        text-transform: capitalize;
+        margin-right: 10px;
+    }
+    
+    .headerAddBtn {
+        cursor: pointer;
+        float: right;
+        background: #4D6488;
+        color: #fff;
+        border: 1px solid;
+        font-family: Nunito;
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 27px;
+        border-radius: 33px;
+        text-transform: capitalize;
+        width: 45px;
+        height: 45px;
+        margin-right: 43px;
     }
     
     .userDetails {
@@ -227,6 +335,7 @@
         align-items: center;
         margin-bottom: 15px;
         padding: 1.5em;
+        border-radius: 5px;
     }
     
     .articleContainer p {
@@ -353,6 +462,12 @@
         height: 40px;
         border: none !important;
         padding-left: 15px !important;
+    }
+    
+    .userTab {
+        display: flex;
+        width: 519px;
+        height: 60px;
     }
     
     @media only screen and (max-width: 600px) {

@@ -16,7 +16,7 @@ export default function comment(props) {
                         </td>
                         <td>
                         <h5 className="text-dark float-left">{props.authorName}</h5>
-                        <p className="text-dark float-right" style={{fontSize:'10px'}}><Moment fromNow date={props.date}  />   </p>
+                        <p className="text-dark float-right" style={{fontSize:'10px'}}> <Moment fromNow date={props.date}  />  </p>
                         <p style={{clear:'both'}}>{props.comment}</p>
                             
                         </td>

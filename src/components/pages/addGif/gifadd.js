@@ -73,7 +73,7 @@ export class gifAdd extends Component {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Header pageTitle='Add A Gif' HeaderIcon=''/> 
+            <Header pageTitle='Add A Gif' HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             <div className='compContainer'>
             <form ref={el => (this.form = el)} onSubmit ={this.addGif}  className='addPost'>

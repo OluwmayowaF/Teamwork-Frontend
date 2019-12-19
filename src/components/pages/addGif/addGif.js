@@ -13,7 +13,7 @@ function addGif(props) {
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <Header pageTitle='Add A Gif' HeaderIcon=''/> 
+            <Header pageTitle='Add A Gif' HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             <AddGifForm  title={props.title} gif={props.gif}  form={props.form}
             onChange={props.onChange}  onSubmit={props.onSubmit}  />

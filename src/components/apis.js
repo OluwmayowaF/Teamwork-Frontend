@@ -20,4 +20,6 @@ export const viewGifUrl = `${baseUrl}/gifs/`
 
 export const GetAUserUrl = `${baseUrl}/auth/user/`
 
+export const GetAllUserUrl = `${baseUrl}/auth/users`
+
 

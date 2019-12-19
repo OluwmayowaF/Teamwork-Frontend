@@ -17,8 +17,15 @@ export default function gifControl(props) {
           });
     }
     return (
-        <React.Fragment>
-          <button onClick={confirmDelete}>Delete</button>
-        </React.Fragment>
+      <React.Fragment>
+        <div className="dropdown">
+  <button className="btn  dropdown-toggle" style={{backgroundColor:'#4D6488', color:'#fff'}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   
+  </button>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <button className="btn btn-outline-danger"  onClick={confirmDelete}>Delete</button>
+  </div>
+  </div>
+    </React.Fragment>
     )
 }

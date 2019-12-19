@@ -3,13 +3,15 @@ import React from 'react';
 import CreateEmployee from './createEmployee'
 import Sidebar from '../../layout/Sidebar'
 import Header from '../../layout/Header'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 //import { loggedIn }   from '../../auth';
 import '../../../App.css';
 
 function createEmployeePage(props) {
-    const icon = <img src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1576619971/TeamWorkFE/fab_2_ewhp1a.svg" alt="manage"/>
+    const icon = <Link to="/dashboard/manageemployees">
+    <button className='backBtn'> manage </button>
+    </Link>
     return (
         <div>
         

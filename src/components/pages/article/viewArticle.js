@@ -189,9 +189,9 @@ export class viewArticle extends Component {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
             {
-                this.state.loaded ?
-                <Header 
-            pageTitle= {this.state.article.ownername} HeaderIcon=''/> :null
+            this.state.loaded ?
+            <Header 
+            pageTitle= {'Article - '+this.state.article.ownername} HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> :null
             }
            
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />

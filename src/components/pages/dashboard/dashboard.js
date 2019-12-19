@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../../layout/Sidebar'
 //import Footer from '../../layout/Footer'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import LiveFeed from './liveFeed'
 import '../../../App.css';
 import { loggedIn }   from '../../auth';
@@ -16,7 +16,8 @@ export class dashboard extends Component {
         return (
 
             <div>
-            <Header pageTitle='Home' /> 
+            <Header pageTitle='Home'  buttonText ={<Link style={{ color: '#4D6488', textDecoration:'none' }}
+             to='/dashboard/myposts'>my posts</Link>}/> 
             <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
