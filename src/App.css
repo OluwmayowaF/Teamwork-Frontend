@@ -1,15 +1,69 @@
+    /* General Site Styling */
+    
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
     
-    .compContainer button {
-        outline: none;
-    }
-    
     body {
         font-family: 'Montserrat', sans-serif;
+    }
+    /************* Header Styling ********************/
+    
+    .loginHeader {
+        grid-column-start: span 3;
+        height: 70px;
+        background-color: #343A40;
+        flex-direction: row;
+        padding: 0;
+        align-items: center;
+    }
+    
+    .loginHeader img {
+        min-width: 20%;
+        padding-left: 3%;
+    }
+    /****************************************/
+    /* Login Page Styling */
+    
+    .loginMain {
+        background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1575308309/TeamWorkFE/Group_2_kpwim7.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 20% auto 10%;
+        grid-template-columns: 20% auto 20%;
+    }
+    
+    .Login-form-container {
+        background: rgb(157, 156, 156, 0.1);
+        mix-blend-mode: normal;
+        opacity: 0.5;
+        border-radius: 8px;
+        color: #fff;
+        padding: 5%;
+        width: 435px;
+        height: 477px;
+        margin: auto;
+    }
+    
+    .loginLogo {
+        padding-top: -3em;
+        padding-bottom: 2em;
+    }
+    
+    .loginFooter {
+        height: 50px !important;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+    
+    .compContainer button {
+        outline: none;
     }
     
     .compContainer {
@@ -36,50 +90,16 @@
         width: 100%;
     }
     
-    .loginHeader {
-        height: 70px !important;
-    }
-    
-    .loginLogo {
-        padding-top: -3em;
-        padding-bottom: 2em;
-    }
-    
-    .loginHeader img {
-        min-width: 20%;
-        margin-left: 20px;
-        margin-top: -20px;
-    }
-    
     .logo {
         display: flex;
         width: 50%;
         float: left !important;
     }
     
-    .loginMain {
-        background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1575308309/TeamWorkFE/Group_2_kpwim7.svg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    
     .Main-login {
         margin: 70px;
         font-family: 'Montserrat', sans-serif;
         color: #fff;
-    }
-    
-    .Login-form-container {
-        background: rgb(157, 156, 156, 0.1);
-        mix-blend-mode: normal;
-        opacity: 0.5;
-        border-radius: 8px;
-        color: #fff;
-        padding: 12% !important;
-        margin: 10% 0 !important;
     }
     
     .Login-form-container input[type=text],
@@ -139,14 +159,6 @@
     .Login-form-container img {
         width: 30%;
         padding: 5%;
-    }
-    
-    .loginFooter {
-        height: 50px !important;
-        width: 100%;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
     }
     
     .LoginLink {
@@ -487,7 +499,15 @@
         height: 60px;
     }
     
-    @media only screen and (min-width: 600px) {
+    @media only screen and (max-width: 600px) {
+        .loginMain {
+            grid-template-rows: 20% auto 10%;
+            grid-template-columns: 10% auto 10%;
+        }
+        .Login-form-container {
+            width: auto !important;
+            height: auto !important;
+        }
         .sidenav {
             width: 20% !important;
             height: 100vh;

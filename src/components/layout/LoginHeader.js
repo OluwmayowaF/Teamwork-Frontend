@@ -7,9 +7,9 @@ import '../../App.css';
 function LoginHeader() {
     return (
         
-       <nav className="loginHeader navbar navbar-dark bg-dark">
+       <nav className="loginHeader">
         
-            <img className=" " src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1575305942/TeamWorkFE/Group_1_wqsbzj.svg" alt="logo" />
+            <img src="https://res.cloudinary.com/oluwamayowaf/image/upload/v1575305942/TeamWorkFE/Group_1_wqsbzj.svg" alt="logo" />
         
         </nav>
     )

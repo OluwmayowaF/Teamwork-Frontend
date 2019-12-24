@@ -61,7 +61,7 @@ export class login extends Component {
     
 
     onSubmit = (e) => { 
-     const loading = <img src='../components/elements/loading.gif' alt='loading'></img>
+     // const loading = <img src='../components/elements/loading.gif' alt='loading'></img>
     e.preventDefault();
     if(this.validEmail !== false && this.validPassword !== false){
         this.setState({loginbtn: 'Loading...'})
@@ -118,10 +118,11 @@ export class login extends Component {
 }     
     render() {   
         return (
+            <div >
             <div className='Login-form-container text-center'> 
                 <img className='' src='https://res.cloudinary.com/oluwamayowaf/image/upload/v1575321531/TeamWorkFE/Group_3_lxwnkh.svg' alt='teamworkLogo'></img>
-                <h3 className="col-md-12" >Log in to you account</h3>
-                <p className="col-md-12" >*login with credentials provided by the IT department</p>
+                <h3>Log in to you account</h3>
+                <p>*login with credentials provided by the IT department</p>
                 
                 <form onSubmit ={this.onSubmit}>
                 <div className="form-group">
@@ -184,6 +185,7 @@ export class login extends Component {
                 </form>
             
            
+            </div>
             </div>
         )
     }

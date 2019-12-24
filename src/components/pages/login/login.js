@@ -16,17 +16,11 @@ export default function login(props) {
              <Redirect to="/dashboard" />
             : null
         }
+       
         <LoginHeader /> 
-            <div className='container-fluid '>
-                <div className='row d-flex justify-content-center' >
-                
-                    <div className='col-md-4'>
-                        <LoginForm />
-                    </div>
-
-                </div>
-  
-            </div>                
+        <div></div>
+                   <LoginForm />
+                        
             <Footer />  
         </div>
        
