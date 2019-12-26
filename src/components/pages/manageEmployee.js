@@ -51,13 +51,14 @@ fetch(GetAllUserUrl, {
 }
     render() {
         return (
-            <div>
-            
-                <Header 
+            <div className='mainContainer'>
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+            <div className ='side'>
+            <Header 
                  pageTitle= 'Employees' HeaderIcon={<button className='backBtn' 
                  onClick={() => this.props.history.goBack()}>BACK</button>}/> 
             
-            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+           
                 {
                     this.state.loaded === true ?
                     this.state.employees.map((employee , key) =>(
@@ -69,6 +70,8 @@ fetch(GetAllUserUrl, {
                     />
                     </div>)):<LoadingScreen />
                 }
+            </div>
+               
                
                 
             </div>

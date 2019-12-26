@@ -5,7 +5,7 @@ export default function comment(props) {
     
     return (
         <div>
-            <div className='commentContainer' key={props.id} style={{paddingBottom:'30px'}}>
+            <div className='commentContainer' key={props.id} >
                 <table >
                     <tbody>
                     <tr >
@@ -14,7 +14,7 @@ export default function comment(props) {
                             <button className=' avatar'> {`${props.authorName}`.charAt(0)}</button>
                            
                         </td>
-                        <td>
+                        <td style={{width:'500px'}}>
                         <h5 className="text-dark float-left">{props.authorName}</h5>
                         <p className="text-dark float-right" style={{fontSize:'10px'}}> <Moment fromNow date={props.date}  />  </p>
                         <p style={{clear:'both'}}>{props.comment}</p>

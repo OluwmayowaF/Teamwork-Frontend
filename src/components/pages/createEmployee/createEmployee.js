@@ -50,7 +50,7 @@ export class createEmployee extends Component {
     //
     render() {
         return (
-            <div className='compContainer '>
+            <div>
             <form className='createEmployee' onSubmit ={this.onSubmit}>
             <div className="form-group  ">
                 <label htmlFor="firstname">Firstname</label>

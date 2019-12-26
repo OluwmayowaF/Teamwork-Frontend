@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import Feeds from '../../elements/feed'
 import { getToken }   from '../../auth';
 //import { signedInUser }   from '../../auth';
-import { Redirect } from 'react-router-dom'
-import { feedsUrl } from '../../apis'
+import { Redirect,Link } from 'react-router-dom'
+import { myfeedsUrl } from '../../apis'
 import swal from '@sweetalert/with-react'
-import LoadingScreen from '../../elements/loadingScreen'
+import PropTypes from 'prop-types';
+import LoadingScreen from '../../elements/loadingScreen';
 
 
-export class liveFeed extends Component {
+export class myFeed extends Component {
     state={
       feeds :[
 
       ],
-      loaded: false,
+      isloaded: false,
     }
 
 
   componentDidMount(){
   //  signedInUser()
    const token = getToken();
-    fetch(feedsUrl, {
+    fetch(myfeedsUrl, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -31,8 +32,9 @@ export class liveFeed extends Component {
     .then(resp => resp.json())
     .then(data => { 
       if (data){
+        console.log(data)
         this.setState({feeds: data.data})
-        this.setState({loaded:true})
+        this.setState({isloaded:true})
         
       } if (data.status === '401'){
         return   <Redirect to="/login" />
@@ -55,32 +57,36 @@ export class liveFeed extends Component {
   }
     render() {
         return (
-          <div className='' >
-            
+        <React.Fragment >
             {
-            this.state.loaded ?
+            this.state.isloaded 
+            ?
             this.state.feeds.map((feed , key) =>(
-            <div  
-            key = {
+            <div  key = {
               feed.url ? 'gif'+feed.id : 'article'+feed.id
             }>
+            
             <Feeds 
             id={feed.id} 
             article = {feed.article}  
             title={feed.title} 
-            url={feed.url}
+            url={feed.imageurl}
             date={feed.createdon}
             authorId={feed.authorid}/>
             </div>
-            )): <LoadingScreen />      
+            )):<LoadingScreen />
             }
-            </div>
-          
+            </React.Fragment>
         )
     }
    
         
 }
 
-export default liveFeed
+myFeed.propTypes = {
+  logOut: PropTypes.func.isRequired,
+  // UserName: PropTypes.string.isRequired,
+
+}
+export default myFeed
 

@@ -11,7 +11,7 @@ export default function commentForm(props) {
                         <input  name='addcomments'type='text'
                     value={props.addComments}
                     onChange={props.onChange}
-                    style={{width:'100%'}}>
+                    style={{width:'80%'}}>
                     </input>
 
                 </form>

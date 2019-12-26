@@ -184,8 +184,10 @@ export class viewArticle extends Component {
 
     render() {
         return (
-            <div >
-            {
+            <div className='mainContainer' >
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+                <div className ='side'>
+                {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
             {
@@ -194,7 +196,7 @@ export class viewArticle extends Component {
             pageTitle= {'Article - '+this.state.article.ownername} HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> :null
             }
            
-            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+           
            
             <div className='compContainer'>
               
@@ -249,6 +251,9 @@ export class viewArticle extends Component {
                
                 
                 </div>
+
+                </div>
+            
             </div>
         )}  
 

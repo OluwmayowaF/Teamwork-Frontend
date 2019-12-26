@@ -80,15 +80,19 @@ export class addArticle extends Component{
 
     render(){
     return (
-        <div>
-        {
+        <div className='mainContainer'>
+        <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+            <div className='side'>
+            {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
             <Header pageTitle='Add An Article' HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> 
-            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+           
           
             <AddArticleForm  title={this.state.title} article={this.state.article} category={this.state.category} 
             onChange={this.onChangeArticle}  onSubmit={this.addArticle} AddBtnUx={this.state.addBtn} />
+            </div>
+       
             
             
         </div>

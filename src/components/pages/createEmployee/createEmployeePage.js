@@ -13,16 +13,14 @@ function createEmployeePage(props) {
     <button className='backBtn'> manage </button>
     </Link>
     return (
-        <div>
-        
-            <Header pageTitle='New Employee' HeaderIcon={icon}/>
-
-            <Sidebar logOut={props.logOut} UserName={props.UserName} />
-           
-            <CreateEmployee />
-            
-          
-            
+        <div className='mainContainer'>
+        <Sidebar logOut={props.logOut} UserName={props.UserName} />
+        <div className='side'>
+        <Header pageTitle='New Employee' HeaderIcon={icon}/>
+        <div className='allFeed'>
+        <CreateEmployee />
+        </div>
+        </div>
         </div>
     )
 }

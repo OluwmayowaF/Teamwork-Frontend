@@ -4,7 +4,7 @@ import { ClipLoader } from 'react-spinners';
 export default function loadingScreen(props) {
     return (
         <div className='text-center loadingscreen' >
-            <div className='sweet-loading' >
+            <div className='sweet-loading loader' >
             <ClipLoader
              //css={override}
               sizeUnit={"px"}

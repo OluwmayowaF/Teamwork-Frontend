@@ -15,18 +15,23 @@ export class dashboard extends Component {
     render() {
         return (
 
-            <div>
+            <div className='mainContainer'>
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+                <div className ='side'>
+
+                
             <Header pageTitle='Home'  buttonText ={<Link style={{ color: '#4D6488', textDecoration:'none' }}
              to='/dashboard/myposts'>my posts</Link>}/> 
-            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+           
             {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
-            <div className='compContainer container-fluid' >
-                <div className='row'>
+            <div className='allFeed'>
             <LiveFeed />
             </div>
-            </div>
+          
+           </div>
+           
            
              
             </div>

@@ -136,8 +136,10 @@ export class viewGif extends Component {
 
     render() {
         return (
-            <div >
-            {
+            <div className ='mainContainer' >
+            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
+                <div className='side'>
+                {
             loggedIn() === false ? <Redirect to="/login" /> : null
             }
             {
@@ -145,16 +147,16 @@ export class viewGif extends Component {
                 <Header 
                  pageTitle= {'Gif - '+this.state.gif.ownername} HeaderIcon={<button className='backBtn' onClick={() => this.props.history.goBack()}>BACK</button>}/> :null
             }
-            <Sidebar logOut={this.props.logOut} UserName={this.props.UserName} />
-            <div className=" compContainer"  >
+            <div className=" allFeed"  >
                 {
                 this.state.loaded ?
-                <div style={{width:'60%'}} className='allFeed'> 
+                <div className='viewPost'> 
                 <Gif 
                 id={this.state.gif.id}
                 date={this.state.gif.createdOn}
                 title={this.state.gif.title}
                 url={this.state.gif.url}
+                deleteGif={this.deleteGif}
                 isOwner ={this.state.owner}
                 />
                 <CommentForm addComment={this.addComment} addComments={this.state.addcomments}
@@ -181,6 +183,8 @@ export class viewGif extends Component {
                 }
               </div>
                 </div>
+                </div>
+           
                 
             </div>
         )

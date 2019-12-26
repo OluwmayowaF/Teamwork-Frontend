@@ -1,516 +1,578 @@
-    /* General Site Styling */
-    
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    
-    body {
-        font-family: 'Montserrat', sans-serif;
-    }
-    /************* Header Styling ********************/
-    
-    .loginHeader {
-        grid-column-start: span 3;
-        height: 70px;
-        background-color: #343A40;
-        flex-direction: row;
-        padding: 0;
-        align-items: center;
-    }
-    
-    .loginHeader img {
-        min-width: 20%;
-        padding-left: 3%;
-    }
-    /****************************************/
-    /* Login Page Styling */
-    
-    .loginMain {
-        background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1575308309/TeamWorkFE/Group_2_kpwim7.svg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100vh;
-        display: grid;
-        grid-template-rows: 20% auto 10%;
-        grid-template-columns: 20% auto 20%;
-    }
-    
-    .Login-form-container {
-        background: rgb(157, 156, 156, 0.1);
-        mix-blend-mode: normal;
-        opacity: 0.5;
-        border-radius: 8px;
-        color: #fff;
-        padding: 5%;
-        width: 435px;
-        height: 477px;
-        margin: auto;
-    }
-    
-    .loginLogo {
-        padding-top: -3em;
-        padding-bottom: 2em;
-    }
-    
-    .loginFooter {
-        height: 50px !important;
-        width: 100%;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-    }
-    
-    .compContainer button {
-        outline: none;
-    }
-    
-    .compContainer {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
+/* General Site Styling */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* :focus {
+    outline: none !important
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/************* Header Styling ********************/
+
+.loginHeader {
+    grid-column-start: span 3;
+    height: 70px;
+    background-color: #343A40;
+    flex-direction: row;
+    padding: 0;
+    align-items: center;
+}
+
+.loginHeader img {
+    min-width: 20%;
+    padding-left: 3%;
+}
+
+.loader {
+    padding-top: 20%;
+    margin: auto;
+}
+
+.headerMain {
+    /*display: flex;
         width: 92%;
-        float: right;
-        margin-top: 2em !important;
-    }
-    /***************Login******************/
-    
-    .loginPage {
-        height: 100vh;
-    }
-    
-    .loginContainer {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-    
-    .logo {
-        display: flex;
-        width: 50%;
-        float: left !important;
-    }
-    
-    .Main-login {
-        margin: 70px;
-        font-family: 'Montserrat', sans-serif;
-        color: #fff;
-    }
-    
-    .Login-form-container input[type=text],
-    [type=password] {
-        background: none !important;
-        border-radius: 0px !important;
-        border-bottom: 1px solid #F1F3F5 !important;
-        border: none;
-        padding: 0px;
-        color: #FFFFFF !important;
-    }
-    
-    .Login-form-container label {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 100;
-        font-size: 8px;
-        line-height: 25px;
-        color: white;
-    }
-    
-    .Login-form-container p {
-        font-family: 'Poppins', sans-serif;
-        font-style: normal;
-        font-weight: 100;
-        font-size: 14px;
-        line-height: 25px;
-    }
-    
-    .Login-form-container h3 {
-        font-family: 'Poppins', sans-serif;
-        font-style: normal;
-        font-weight: 100;
-        font-size: 24px;
-        line-height: 25px;
-    }
-    
-    .Login-form-container form ::placeholder {
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 21px;
-        /* identical to box height, or 150% */
-        color: #FFFFFF;
-    }
-    
-    .Login-form-container label {
-        float: left !important;
-        font-family: 'Nunito';
-        color: #FFF;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 21px;
-    }
-    
-    .Login-form-container img {
-        width: 30%;
-        padding: 5%;
-    }
-    
-    .LoginLink {
-        font-family: 'Nunito';
-        color: #FFF;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 21px;
-        /* identical to box height, or 150% */
-        float: right;
-    }
-    
-    .Login-btn {
-        font-family: 'Nunito', sans-serif;
-        color: #FFF;
-        margin: auto;
-        width: 100%;
-        height: 37px;
-        background: rgb(91, 154, 248, 0.6) !important;
-        border-radius: 8px;
-        border: none !important;
-        margin-top: 12px;
-        font-style: italic;
-        font-weight: 800;
-        font-size: 16px;
-        line-height: 24px;
-    }
-    
-    .error-message {
-        font-size: 18px;
-        color: #c4c4c4;
-        text-shadow: #FFF;
-        padding: 0px !important;
-    }
-    
-    .loadingscreen {
-        padding-top: 20%;
-    }
-    
-    .allFeed {
-        margin: auto !important;
-    }
-    /* The sidebar menu */
-    
-    .sidenav {
-        font-size: 18px;
+        float: right !important;*/
+    width: 100%;
+    height: 67px;
+    background-color: #FFFFFF !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/******************Login Page Styling**********************/
+
+.loginMain {
+    background: url(https://res.cloudinary.com/oluwamayowaf/image/upload/v1575308309/TeamWorkFE/Group_2_kpwim7.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 20% auto 10%;
+    grid-template-columns: 20% auto 20%;
+}
+
+.Login-form-container {
+    background: rgb(157, 156, 156, 0.1);
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    border-radius: 8px;
+    color: #fff;
+    padding: 5%;
+    width: 435px;
+    height: auto;
+    margin: auto;
+}
+
+.loginLogo {
+    padding-top: -3em;
+    padding-bottom: 2em;
+}
+
+.loginFooter {
+    height: 50px !important;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.mainContainer button {
+    outline: none;
+}
+
+.compContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 92%;
+    float: right;
+    margin-top: 2em !important;
+}
+
+
+/***************Login******************/
+
+.loginPage {
+    height: 100vh;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    width: 50%;
+    float: left !important;
+}
+
+.Main-login {
+    margin: 70px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+.Login-form-container input[type=password] {
+    background: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #F1F3F5 !important;
+    border: none;
+    color: #FFFFFF !important;
+}
+
+.Login-form-container input[type=text] {
+    background: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #F1F3F5 !important;
+    border: none;
+    color: #FFFFFF !important;
+}
+
+.Login-form-container p {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.Login-form-container h3 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 24px;
+    line-height: 25px;
+}
+
+.Login-form-container form ::placeholder {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height, or 150% */
+    color: #FFFFFF;
+}
+
+.Login-form-container label {
+    float: left !important;
+    font-family: 'Nunito';
+    color: #FFF;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.Login-form-container img {
+    width: 30%;
+    padding: 5%;
+}
+
+.LoginLink {
+    font-family: 'Nunito';
+    color: #FFF;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height, or 150% */
+    float: right;
+}
+
+.Login-btn {
+    font-family: 'Nunito', sans-serif;
+    color: #FFF;
+    margin: auto;
+    width: 100%;
+    height: 37px;
+    background: rgb(91, 154, 248, 0.6) !important;
+    border-radius: 8px;
+    border: none !important;
+    margin-top: 12px;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #c4c4c4;
+    text-shadow: #FFF;
+    padding: 0px !important;
+}
+
+
+/******************* Dashboard Style ************************/
+
+.mainContainer {
+    display: flex;
+}
+
+.side {
+    width: 100%;
+}
+
+.loadingscreen {
+    max-height: 100vh;
+    overflow-y: scroll;
+    width: 100%;
+    margin: auto !important;
+}
+
+.allFeed {
+    padding-top: 2%;
+    max-height: 90vh;
+    overflow-y: scroll;
+}
+
+
+/* The sidebar menu */
+
+.sidenav {
+    font-size: 18px;
+    height: 100vh !important;
+    /*
         width: 8% !important;
         height: 100vh !important;
         float: left !important;
-        position: fixed;
+        position: fixed;*/
+}
+
+.linkPadding {
+    padding-bottom: 30px;
+}
+
+.headerMain button:hover {
+    transform: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.headerMain button:focus {
+    outline: none;
+}
+
+.headerLogo {
+    float: left;
+}
+
+.errorPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.errorPage p {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #4F4F4F;
+    margin-top: 39px;
+    margin-bottom: 27px;
+}
+
+.errorPage button {
+    width: 125px !important;
+    height: 45px !important;
+    text-align: center;
+    outline: none;
+}
+
+.errorBtn {
+    cursor: pointer;
+    background: #4D6488;
+    color: #ffffff;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 33px;
+    min-width: 99px;
+    min-height: 45px;
+    text-transform: capitalize;
+}
+
+.backBtn {
+    cursor: pointer;
+    float: right;
+    background: #4D6488;
+    color: #ffffff;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 33px;
+    min-width: 99px;
+    min-height: 45px;
+    text-transform: capitalize;
+    margin-right: 10px;
+}
+
+.headerBtn {
+    cursor: pointer;
+    float: right;
+    background: none;
+    color: #4D6488;
+    border: #4D6488 1px solid;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 33px;
+    width: 99px;
+    height: 45px;
+    text-transform: capitalize;
+    margin-right: 10px;
+}
+
+.headerAddBtn {
+    cursor: pointer;
+    float: right;
+    background: #4D6488;
+    color: #fff;
+    border: 1px solid;
+    font-family: Nunito;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    border-radius: 33px;
+    text-transform: capitalize;
+    width: 45px;
+    height: 45px;
+    margin-right: 43px;
+}
+
+.userDetails {
+    text-align: center;
+    padding-bottom: 10%;
+}
+
+.linkWrapper {
+    text-align: center;
+    padding: 15% 0;
+}
+
+.linkStyle {
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.linkStyle:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.articleContainer {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    min-height: 232px;
+    width: 65%;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 1.5em;
+    border-radius: 5px;
+}
+
+.articleContainer p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    /* number of lines to show */
+    line-height: 24px;
+    /* fallback */
+    max-height: 144px;
+    /* fallback */
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.articleContainer h4 {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: #5E5E5E !important;
+}
+
+.articleContainer img {
+    height: 200px;
+    width: 40%;
+}
+
+.commentContainer {
+    padding-bottom: 30px;
+    min-width: 65% !important;
+}
+
+.commentContainer h5 {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    /* Gray 1 */
+    color: #333333;
+}
+
+.commentContainer p {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    /* Gray 2 */
+    color: #4F4F4F;
+}
+
+.commentBtn {
+    background: #4D6488;
+    border-radius: 33px;
+    color: white;
+    width: 126px;
+    height: 45px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    align-items: center;
+    text-align: center;
+}
+
+.avatar {
+    background: #4D6488;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    color: white;
+}
+
+
+/****************** Create Employee ********************/
+
+.createEmployee {
+    width: 40%;
+    margin: auto;
+}
+
+.createEmployee input[type=text],
+input[type=password],
+input[type=textarea],
+select {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    background: rgb(229, 229, 229, 0.4) !important;
+    height: 40px;
+    border: none !important;
+    padding-left: 15px !important;
+}
+
+.addPost {
+    width: 40%;
+    margin: auto;
+}
+
+.viewPost {
+    width: 65%;
+    margin: auto;
+}
+
+.addPost input[type=text],
+[type=password],
+[type="file"],
+select,
+textarea {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #333333;
+    background: rgb(229, 229, 229, 0.4) !important;
+    height: 40px;
+    border: none !important;
+    padding-left: 15px !important;
+}
+
+.userTab {
+    display: flex;
+    width: 519px;
+    height: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+    .loginMain {
+        grid-template-rows: 15% auto 10%;
+        grid-template-columns: 10% auto 10%;
     }
-    
-    .linkPadding {
-        padding-bottom: 30px;
+    .Login-form-container {
+        width: auto !important;
+        height: auto !important;
+        align-self: center;
+        justify-self: center;
     }
-    
-    .headerMain {
-        display: flex;
-        width: 92%;
-        float: right !important;
-        height: 67px;
-        background-color: #FFFFFF !important;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+    .mainContainer {
+        grid-template-rows: 20% auto;
+        grid-template-columns: 20% auto;
     }
-    
-    .headerMain button:hover {
-        transform: none;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    }
-    
-    .headerMain button:focus {
-        outline: none;
-    }
-    
-    .headerLogo {
-        float: left;
-    }
-    
-    .errorPage {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10%;
-    }
-    
-    .errorPage p {
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 25px;
-        text-align: center;
-        color: #4F4F4F;
-        margin-top: 39px;
-        margin-bottom: 27px;
-    }
-    
-    .errorPage button {
-        width: 125px !important;
-        height: 45px !important;
-        text-align: center;
-        outline: none;
-    }
-    
-    .errorBtn {
-        cursor: pointer;
-        background: #4D6488;
-        color: #ffffff;
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 16px;
-        border-radius: 33px;
-        min-width: 99px;
-        min-height: 45px;
-        text-transform: capitalize;
-    }
-    
-    .backBtn {
-        cursor: pointer;
-        float: right;
-        background: #4D6488;
-        color: #ffffff;
-        font-family: Nunito;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 16px;
-        border-radius: 33px;
-        min-width: 99px;
-        min-height: 45px;
-        text-transform: capitalize;
-        margin-right: 10px;
-    }
-    
-    .headerBtn {
-        cursor: pointer;
-        float: right;
-        background: none;
-        color: #4D6488;
-        border: #4D6488 1px solid;
-        font-family: Nunito;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 16px;
-        border-radius: 33px;
-        width: 99px;
-        height: 45px;
-        text-transform: capitalize;
-        margin-right: 10px;
-    }
-    
-    .headerAddBtn {
-        cursor: pointer;
-        float: right;
-        background: #4D6488;
-        color: #fff;
-        border: 1px solid;
-        font-family: Nunito;
-        font-family: Nunito;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 27px;
-        border-radius: 33px;
-        text-transform: capitalize;
-        width: 45px;
-        height: 45px;
-        margin-right: 43px;
-    }
-    
-    .userDetails {
-        text-align: center;
-        padding-bottom: 10%;
-    }
-    
-    .linkWrapper {
-        text-align: center;
-        padding: 15% 0;
-    }
-    
-    .linkStyle {
-        color: white;
-        font-size: 18px;
-        font-weight: 300;
-        text-decoration: none;
-    }
-    
-    .linkStyle:hover {
-        color: white;
-        text-decoration: none;
-    }
-    
+    .createEmployee,
+    .viewPost,
+    .addPost,
     .articleContainer {
-        background: #FFFFFF;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        min-height: 232px;
-        width: 65%;
-        margin: auto;
-        align-items: center;
-        margin-bottom: 15px;
-        padding: 1.5em;
-        border-radius: 5px;
+        width: 80%;
     }
-    
-    .articleContainer p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 5;
-        /* number of lines to show */
-        line-height: 24px;
-        /* fallback */
-        max-height: 144px;
-        /* fallback */
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-    }
-    
-    .articleContainer h4 {
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 20px;
-        display: flex;
-        align-items: center;
-        text-transform: capitalize;
-        color: #5E5E5E !important;
-    }
-    
-    .articleContainer img {
-        height: 200px;
-        width: 40%;
-    }
-    
-    .commentContainer h5 {
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 16px;
-        display: flex;
-        align-items: center;
-        text-transform: capitalize;
-        /* Gray 1 */
-        color: #333333;
-    }
-    
-    .commentContainer p {
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 16px;
-        display: flex;
-        align-items: center;
-        text-transform: capitalize;
-        /* Gray 2 */
-        color: #4F4F4F;
-    }
-    
-    .commentBtn {
-        background: #4D6488;
-        border-radius: 33px;
-        color: white;
-        width: 126px;
-        height: 45px;
-        font-family: 'Nunito';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 19px;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .avatar {
-        background: #4D6488;
-        border-radius: 50%;
-        height: 60px;
-        width: 60px;
-        color: white;
-    }
-    /****************** Create Employee ********************/
-    
-    .createEmployee {
-        width: 40%;
-        margin: auto;
-    }
-    
-    .createEmployee input[type=text],
-    [type=password],
-    [type=textarea],
-    select {
-        font-family: Nunito;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 21px;
-        background: rgb(229, 229, 229, 0.4) !important;
-        height: 40px;
-        border: none !important;
-        padding-left: 15px !important;
-    }
-    
-    .addPost {
-        width: 40%;
-        margin: auto;
-    }
-    
-    .addPost input[type=text],
-    [type=password],
-    [type="file"],
-    select,
-    textarea {
-        font-family: Nunito;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 21px;
-        color: #333333;
-        background: rgb(229, 229, 229, 0.4) !important;
-        height: 40px;
-        border: none !important;
-        padding-left: 15px !important;
-    }
-    
-    .userTab {
-        display: flex;
-        width: 519px;
-        height: 60px;
-    }
-    
-    @media only screen and (max-width: 600px) {
-        .loginMain {
-            grid-template-rows: 20% auto 10%;
-            grid-template-columns: 10% auto 10%;
-        }
-        .Login-form-container {
-            width: auto !important;
-            height: auto !important;
-        }
+    /*
         .sidenav {
             width: 20% !important;
-            height: 100vh;
+            height: 1000%;
+        }
+        .compContainer {
+            width: 80% !important;
+            float: right;
         }
         .headerMain {
             margin: 0;
@@ -518,5 +580,5 @@
         .headerMain,
         .commentContainer {
             width: 80% !important;
-        }
-    }
+        }*/
+}

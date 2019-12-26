@@ -1,12 +1,12 @@
 import React from 'react'
-import GifControl from '../../components/elements/articleControl';
+import GifControl from '../../components/elements/gifControl';
 import Moment from 'react-moment';
 
 export default function gif(props) {
     const control =()=>{
         if(props.isOwner === true){
           return <GifControl 
-          deleteArticle={props.deleteGif}
+          deleteGif={props.deleteGif}
           />
         }else {
           return null;
